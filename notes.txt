@@ -1,0 +1,27 @@
+database:
+	user
+	item
+	users has friends of users
+	users has wishlist of items with frindes can contrbute on it
+
+server:
+	item = database item
+		isAvilable()
+		getPrice()
+		
+	user = database user
+		addFriend(user)
+		removeFriend(user)
+		acceptFrind(user)
+		addWish(item)
+		removeWish(item)
+		listFrind()
+		listWishs()
+		contrbuteToFriend(user, item, amount, date)
+
+	dbo = database connection
+		user addUser()
+		item addItem()
+		boolean removeUser()
+		boolean removeItem()
+		Connection connect()

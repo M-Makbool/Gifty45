@@ -1,0 +1,1 @@
+CREATE USER gifty IDENTIFIED BY gifty;

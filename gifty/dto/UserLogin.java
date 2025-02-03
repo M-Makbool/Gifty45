@@ -5,6 +5,11 @@ public class UserLogin {
     private String name;
     private String login;
 
+    public UserLogin(UserLogin userlogin){
+        this.id=userlogin.id;
+        this.name=userlogin.name;
+        this.login=userlogin.login;
+    }
     public UserLogin(int id, String name, String login ){
         this.id=id;
         this.name=name;

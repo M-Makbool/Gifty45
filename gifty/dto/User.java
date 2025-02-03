@@ -10,10 +10,15 @@ public class User extends UserLogin {
     private boolean isDeleted;
     private String telephone;
     private Date dateOfBirth;
-    private ArrayList<UserLogin> frindeList;
+    private ArrayList<UserLogin> friendList;
     private ArrayList<Wish> wishList;
 
-    public User() {
+    public User(UserLogin userlogin, String email, String gender, String telephone, Date dateOfBirth) {
+        super(userlogin);
+        this.email = email;
+        this.gender = gender;
+        this.telephone = telephone;
+        this.dateOfBirth = dateOfBirth;
     }
 
  
@@ -38,8 +43,8 @@ public class User extends UserLogin {
         return dateOfBirth;
     }
 
-    public ArrayList<UserLogin> getFrindeList() {
-        return frindeList;
+    public ArrayList<UserLogin> getfriendList() {
+        return friendList;
     }
 
     public ArrayList<Wish> getWishList() {

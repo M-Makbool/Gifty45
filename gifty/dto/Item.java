@@ -1,5 +1,8 @@
 package gifty.dto;
-import java.util.ArrayList ; 
+
+import gifty.dao.ItemQuery;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Item {
     private int item_id;
@@ -8,7 +11,7 @@ public class Item {
     private double price;
     private String status;
 
-    private static ArrayList<Item> items = new ArrayList<>();
+    private static ArrayList<Item> items;
 
     public Item(int item_id, String item_name, String category, double price, String status) {
         this.item_id = item_id;
@@ -60,6 +63,10 @@ public class Item {
             if (item.getItem_id() == itemId)
                 return item;
         return null;
+    }
+
+    public static void refreshItems() throws SQLException {
+        items = ItemQuery.getItems();
     }
 
 }

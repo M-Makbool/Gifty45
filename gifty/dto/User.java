@@ -1,40 +1,22 @@
 package gifty.dto;
 
 import java.sql.Date;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class User {
-    private int id;
-    private String name;
-    private String login;
+public class User extends UserLogin {
+
     private String email;
     private String gender;
     private boolean isDeleted;
     private String telephone;
     private Date dateOfBirth;
-    private ArrayList<User> frindeList;
+    private ArrayList<UserLogin> frindeList;
     private ArrayList<Wish> wishList;
 
     public User() {
     }
 
-    public User(ResultSet rs) throws SQLException {
-        id = rs.getInt("");
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getLogin() {
-        return login;
-    }
+ 
 
     public String getEmail() {
         return email;
@@ -56,7 +38,7 @@ public class User {
         return dateOfBirth;
     }
 
-    public ArrayList<User> getFrindeList() {
+    public ArrayList<UserLogin> getFrindeList() {
         return frindeList;
     }
 

@@ -45,4 +45,29 @@ public class ItemQuery {
         return rows;
     }
 
+
+
+    public Item getItemId (int Itemid ) throws SQLException {
+    ResultSet rs ;
+    Item item = null ; 
+            try (PreparedStatement pst = DataBase.getConnection().prepareStatement
+            ("Select * from items where item_id = ?")) 
+            {
+            pst.setInt(1 , Itemid) ; 
+            rs = pst.executeQuery() ; 
+                if (rs.next()) {
+                item = new Item (
+                    rs.getInt("item_id") , 
+                    rs.getString("Name"), 
+                    rs.getString("Category"), 
+                    rs.getDouble("Price"), 
+                    rs.getString("Status")
+            );
+        }
+                   pst.close();
+
+    }
+        return item;
+   }
 }
+

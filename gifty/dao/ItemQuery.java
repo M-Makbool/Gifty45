@@ -40,8 +40,14 @@ public class ItemQuery {
         }
     }
 
-    public int deleteItem(Item item){
-        int rows = 0;
+    public int deleteItem(Item item) throws SQLException {
+        try (PreparedStatement pst = DataBase.getConnection().prepareStatement(
+        "Update items set Status ='isDeleted' where item_id = ?" )){
+            pst.setInt(1,item.getItem_id());
+        
+        int rows = pst.executeUpdate();
+        pst.close();
+        DataBase.getConnection().commit();
         return rows;
     }
 

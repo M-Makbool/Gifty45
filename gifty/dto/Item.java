@@ -11,7 +11,7 @@ public class Item {
     private double price;
     private String status;
 
-    private static ArrayList<Item> items;
+    public static ArrayList<Item> items;
 
     public Item(int item_id, String item_name, String category, double price, String status) {
         this.item_id = item_id;
@@ -19,7 +19,6 @@ public class Item {
         this.category = category;
         this.price = price;
         this.status = status;
-        items.add(this);
     }
 
     public int getItem_id() {
@@ -56,6 +55,10 @@ public class Item {
 
     public String getStatus() {
         return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public static Item selectItemById(int itemId) {

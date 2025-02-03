@@ -5,11 +5,10 @@ import java.util.ArrayList;
 
 public class User extends UserLogin {
 
-    private String email;
-    private String gender;
-    private boolean isDeleted;
-    private String telephone;
-    private Date dateOfBirth;
+    private final String email;
+    private final String gender;
+    private final String telephone;
+    private final Date dateOfBirth;
     private ArrayList<UserLogin> friendList;
     private ArrayList<Wish> wishList;
 
@@ -21,18 +20,12 @@ public class User extends UserLogin {
         this.dateOfBirth = dateOfBirth;
     }
 
- 
-
     public String getEmail() {
         return email;
     }
 
     public String getGender() {
         return gender;
-    }
-
-    public boolean isIsDeleted() {
-        return isDeleted;
     }
 
     public String getTelephone() {

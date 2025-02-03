@@ -1,4 +1,5 @@
 -- Users Table
+DROP TABLE IF EXISTS 
 CREATE TABLE Users (
     User_login VARCHAR2(50) PRIMARY KEY,
     user_email VARCHAR2(100) UNIQUE,
@@ -12,8 +13,9 @@ CREATE TABLE Users (
 );
 
 -- Items Table
+DROP TABLE IF EXISTS
 CREATE TABLE Items (
-    Item_id NUMBER PRIMARY KEY,
+    Item_id NUMBER identity PRIMARY KEY,
     Name VARCHAR2(100),
     Price NUMBER(10,2),
     Category VARCHAR2(50),
@@ -21,6 +23,7 @@ CREATE TABLE Items (
 );
 
 -- Friends Table
+DROP TABLE IF EXISTS
 CREATE TABLE Friends (
     User_login VARCHAR2(50),
     Friend_login VARCHAR2(50),
@@ -31,6 +34,7 @@ CREATE TABLE Friends (
 );
 
 -- Wishing_list Table
+DROP TABLE IF EXISTS
 CREATE TABLE Wishing_list (
     Item_id NUMBER,
     User_login VARCHAR2(50),
@@ -40,7 +44,7 @@ CREATE TABLE Wishing_list (
     FOREIGN KEY (Item_id) REFERENCES Items(Item_id),
     FOREIGN KEY (User_login) REFERENCES Users(User_login)
 );
-
+DROP TABLE IF EXISTS
 CREATE TABLE Contributers (
     Item_id NUMBER,
     User_login VARCHAR2(50),

@@ -1,4 +1,5 @@
 -- Items Table
+DROP table if exists
 CREATE TABLE Items (
     Item_id NUMBER PRIMARY KEY,
     Name VARCHAR2(100),

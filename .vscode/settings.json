@@ -1,6 +1,5 @@
 {
     "java.project.referencedLibraries": [
-        "lib/**/*.jar",
         "javalib/javafx.base.jar",
         "javalib/javafx.controls.jar",
         "javalib/javafx.fxml.jar",
@@ -10,5 +9,12 @@
         "javalib/javafx.web.jar",
         "javalib/javafx-swt.jar",
         "javalib/ojdbc17.jar"
-    ]
+    ],
+    "java.dependency.packagePresentation": "flat",
+    "java.format.settings.url": ".vscode/java-formatter.xml",
+    "java.project.sourcePaths": [
+        "javalib",
+        "."
+    ],
+    "jdk.runConfig.vmOptions": "-cp javalib/ojdbc17.jar",
 }

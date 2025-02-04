@@ -1,10 +1,12 @@
 package gifty.dao;
 
+import gifty.dto.Contributor;
 import gifty.dto.Item;
 import gifty.dto.User;
 import gifty.dto.UserLogin;
 import gifty.dto.Wish;
 import java.sql.Connection;
+import java.sql.Date;
 import oracle.sql.DATE;
 
 import java.sql.PreparedStatement;
@@ -160,4 +162,29 @@ public class UserQuery {
         }
         return wishList;
     }
+
+    public static ArrayList<Contributor> getContributors(Wish wish) throws SQLException {
+        ArrayList<Contributor> contributors = new ArrayList<>();
+
+        String query = "SELECT user_login, SUM(contribution_amount) AS total_contribution FROM contributions WHERE item_id = ? AND wishing_date = ?  GROUP BY user_login";
+
+        try (Connection conn = DataBase.getConnection();
+                PreparedStatement pst = conn.prepareStatement(query)) {
+
+            pst.setInt(1, wish.getItem().getItem_id());
+            pst.setDate(2, wish.getDate());
+
+            try (ResultSet rs = pst.executeQuery()) {
+                while (rs.next()) {
+
+                    contributors.add(new Contributor(
+                            rs.getString("user_login"),
+                            rs.getDouble("total_contribution")));
+                }
+            }
+        }
+
+        return contributors;
+    }
+
 }

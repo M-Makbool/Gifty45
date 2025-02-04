@@ -7,9 +7,9 @@ public class Wish {
     private final Item item;
     private final Date date;
     private final String status;
-    private final ArrayList<Conributer> conributUsers;
+    private final ArrayList<Contributor> conributUsers;
 
-    public Wish(Item item, Date date, String status, ArrayList<Conributer> conributUsers) {
+    public Wish(Item item, Date date, String status, ArrayList<Contributor> conributUsers) {
         this.item = item;
         this.date = date;
         this.status = status;
@@ -28,7 +28,7 @@ public class Wish {
         return status;
     }
 
-    public ArrayList<Conributer> getConributUsers() {
+    public ArrayList<Contributor> getConributUsers() {
         return conributUsers;
     }
 }

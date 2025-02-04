@@ -4,6 +4,7 @@ import gifty.dto.Item;
 import gifty.dto.User;
 import gifty.dto.UserLogin;
 import gifty.dto.Wish;
+import java.sql.Connection;
 import oracle.sql.DATE;
 
 import java.sql.PreparedStatement;
@@ -121,5 +122,42 @@ public class UserQuery {
         pst.setDate(3, DATE.getCurrentDate().dateValue());
         return pst.executeUpdate();
 
+    }
+
+    public static ArrayList<UserLogin> getFriends(UserLogin userLogin) throws SQLException {
+        ArrayList<UserLogin> friends = new ArrayList<>();
+        String query = "select u.User_login , u.user_name from users u join Friends f on u.User_login = f.Friend_login or u.User_login = f.User_login where f.User_login = ? or f.Friend_login = ? and f.Status = 'ACCEPTED'";
+        try (Connection conn = DataBase.getConnection();
+                PreparedStatement pst = conn.prepareStatement(query)) {
+            pst.setString(1, userLogin.getLogin());
+            try (ResultSet rs = pst.executeQuery()) {
+                while (rs.next()) {
+                    friends.add(new UserLogin(rs.getNString("User_name"), rs.getString("User_login")));
+                }
+            }
+        }
+        return friends;
+    }
+
+    public static ArrayList<Wish> getWishList(UserLogin userLogin) throws SQLException {
+        ArrayList<Wish> wishList = new ArrayList<>();
+        String query = "select * From wishing_list where User_login = ? ";
+         
+    
+        try (Connection conn = DataBase.getConnection();
+                PreparedStatement pst = conn.prepareStatement(query)) {
+            pst.setString(1, userLogin.getLogin());
+            try (ResultSet rs = pst.executeQuery()) {
+                while (rs.next()) {
+                       
+                    wishList.add(new Wish(
+                        rs.getInt("Item_id"),
+                        rs.getDate("Date"),
+                        rs.getString("status"),
+                         ));
+                }
+            }
+        }
+        return wishList;
     }
 }

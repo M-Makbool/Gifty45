@@ -1,7 +1,11 @@
 package gifty.dao;
 
+import gifty.dto.Item;
 import gifty.dto.User;
 import gifty.dto.UserLogin;
+import gifty.dto.Wish;
+import oracle.sql.DATE;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -82,5 +86,40 @@ public class UserQuery {
 
             return rows;
         }
+    }
+
+    public static User getUser(UserLogin userlogin) throws SQLException {
+        ResultSet rs;
+        PreparedStatement pst = DataBase.getConnection().prepareStatement(
+                " select * from users where user_login = ? and status = 'AVAILABLE' ");
+        pst.setString(1, userlogin.getLogin());
+        rs = pst.executeQuery();
+        rs.next();
+        return new User(
+                userlogin,
+                rs.getString("user_email"),
+                rs.getString("Gender"),
+                rs.getString("telephone"),
+                rs.getDate("DOB")
+
+        );
+    }
+
+    public static int deleteWish(UserLogin userlogin, Wish wish) throws SQLException {
+        PreparedStatement pst = DataBase.getConnection().prepareStatement(
+                " UPDATE Wishing_list SET status = 'DELETED' WHERE user_login = ? AND Item_id = ? ");
+        pst.setString(1, userlogin.getLogin());
+        pst.setInt(2, wish.getItem().getItem_id());
+        return pst.executeUpdate();
+    }
+
+    public static int addWish(UserLogin userlogin, Item item) throws SQLException {
+        PreparedStatement pst = DataBase.getConnection().prepareStatement(
+                " INSERT INTO Wishing_list (Item_id,User_login,Wish_Date ,Status) VALUES (?, ? ,? , 'ACTIVE') ");
+        pst.setInt(1, item.getItem_id());
+        pst.setString(2, userlogin.getLogin());
+        pst.setDate(3, DATE.getCurrentDate().dateValue());
+        return pst.executeUpdate();
+
     }
 }

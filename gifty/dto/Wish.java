@@ -7,28 +7,23 @@ public class Wish {
     private final Item item;
     private final Date date;
     private final String status;
-    private final ArrayList<Contributor> conributUsers;
+    private ArrayList<Contributor> conributUsers;
 
-    public Wish(Item item, Date date, String status, ArrayList<Contributor> conributUsers) {
+    public Wish(Item item, Date date, String status) {
         this.item = item;
         this.date = date;
         this.status = status;
+    }
+
+    public void setConributUsers(ArrayList<Contributor> conributUsers) {
         this.conributUsers = conributUsers;
     }
 
-    public Item getItem() {
-        return item;
-    }
+    public Item getItem() { return item; }
 
-    public Date getDate() {
-        return date;
-    }
+    public Date getDate() { return date; }
 
-    public String getStatus() {
-        return status;
-    }
+    public String getStatus() { return status; }
 
-    public ArrayList<Contributor> getConributUsers() {
-        return conributUsers;
-    }
+    public ArrayList<Contributor> getConributUsers() { return conributUsers; }
 }

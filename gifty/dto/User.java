@@ -12,36 +12,31 @@ public class User extends UserLogin {
     private ArrayList<UserLogin> friendList;
     private ArrayList<Wish> wishList;
 
-    public User(UserLogin userlogin, String email, String gender, String telephone, Date dateOfBirth) {
+    public User(UserLogin userlogin, String email, String gender, String telephone,
+            Date dateOfBirth) {
         super(userlogin);
-        this.email = email;
+        this.email = email.trim().replaceAll("\\s+", " ");
         this.gender = gender;
-        this.telephone = telephone;
+        this.telephone = telephone.trim().replaceAll("\\s+", " ");
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmail() { return email; }
+
+    public String getGender() { return gender; }
+
+    public String getTelephone() { return telephone; }
+
+    public Date getDateOfBirth() { return dateOfBirth; }
+
+    public void setFriendList(ArrayList<UserLogin> friendList) {
+        this.friendList = new ArrayList<>(friendList);
     }
 
-    public String getGender() {
-        return gender;
-    }
+    public void setWishList(ArrayList<Wish> wishList) { this.wishList = new ArrayList<>(wishList); }
 
-    public String getTelephone() {
-        return telephone;
-    }
+    public ArrayList<UserLogin> getfriendList() { return friendList; }
 
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public ArrayList<UserLogin> getfriendList() {
-        return friendList;
-    }
-
-    public ArrayList<Wish> getWishList() {
-        return wishList;
-    }
+    public ArrayList<Wish> getWishList() { return wishList; }
 
 }

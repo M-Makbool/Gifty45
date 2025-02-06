@@ -10,15 +10,11 @@ public class UserLogin {
     }
 
     public UserLogin(String name, String login) {
-        this.name = name;
-        this.login = login;
+        this.name = name.trim().replaceAll("\\s+", " ");
+        this.login = login.trim().replaceAll("\\s+", " ");
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
-    public String getLogin() {
-        return login;
-    }
+    public String getLogin() { return login; }
 }

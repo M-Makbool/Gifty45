@@ -1,16 +1,13 @@
 package gifty.dto;
 
 public class Contributor extends UserLogin {
-    private final int amount;
+    private final double amount;
 
-    public Contributor(String userlogin, double amount) {
+    public Contributor(UserLogin userlogin, double amount) {
         super(userlogin);
         this.amount = amount;
-
     }
 
-    public int getAmount() {
-        return amount;
-    }
+    public double getAmount() { return amount; }
 
 }

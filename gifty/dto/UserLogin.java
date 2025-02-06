@@ -3,6 +3,7 @@ package gifty.dto;
 public class UserLogin {
     private String name;
     private String login;
+    private String password;
 
     public UserLogin(UserLogin userlogin) {
         this.name = userlogin.name;
@@ -14,7 +15,11 @@ public class UserLogin {
         this.login = login.trim().replaceAll("\\s+", " ");
     }
 
+    public void setPassword(String password) { this.password = password; }
+
     public String getName() { return name; }
 
     public String getLogin() { return login; }
+
+    public String getPassword() { return password; }
 }

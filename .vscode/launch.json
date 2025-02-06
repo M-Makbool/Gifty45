@@ -8,7 +8,7 @@
             "type": "java",
             "name": "Launch Java Program",
             "request": "launch",
-            "mainClass": "gifty.dao.DataBase",
+            "mainClass": "Gifty45",
         }
     ]
 }

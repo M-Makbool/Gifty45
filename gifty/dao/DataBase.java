@@ -1,16 +1,17 @@
 package gifty.dao;
 
-import oracle.jdbc.OracleDriver;
-import java.sql.DriverManager;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
+import oracle.jdbc.OracleDriver;
 
 public class DataBase {
     static Connection connection;
 
     private DataBase() throws SQLException {
         DriverManager.registerDriver(new OracleDriver());
-        connection = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/freepdb1", "gifty", "gifty");
+        connection = DriverManager.getConnection("jdbc:oracle:thin:@//localhost:1521/freepdb1",
+                "gifty", "gifty");
     }
 
     public static synchronized Connection getConnection() throws SQLException {

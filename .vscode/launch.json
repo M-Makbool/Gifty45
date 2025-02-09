@@ -9,6 +9,7 @@
             "name": "Launch Java Program",
             "request": "launch",
             "mainClass": "Gifty45",
+            "vmArgs": "--module-path javalib/ --add-modules javafx.controls,javafx.fxml"
         }
     ]
 }

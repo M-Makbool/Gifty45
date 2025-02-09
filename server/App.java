@@ -1,3 +1,5 @@
+import gifty.dao.*;
+import gifty.dto.*;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -6,15 +8,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import gifty.dao.*;
-import gifty.dto.*;
 
 public class App extends Application {
 
         @Override
         public void start(Stage primaryStage) throws IOException {
 
-                Parent root = FXMLLoader.load(getClass().getResource("Login-Hania.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("fxmls/ServerLogin.fxml"));
                 Scene scene = new Scene(root, 1080, 720);
 
                 primaryStage.setTitle("Hello World!");

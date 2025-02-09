@@ -8,6 +8,8 @@
         "../javalib/lib/javafx.swing.jar",
         "../javalib/lib/javafx.web.jar",
         "../javalib/lib/javafx-swt.jar",
+        "../javalib/lib/giftydto.jar",
+
     ],
     "java.dependency.packagePresentation": "flat",
     "java.format.settings.url": ".vscode/java-formatter.xml",
@@ -15,6 +17,6 @@
         "../javalib/lib",
         ".."
     ],
-    "jdk.runConfig.vmOptions": " --module-path ../javalib/lib/ --add-modules javafx.fxml,javafx.controllers",
+    "jdk.runConfig.vmOptions": " --module-path ../javalib/lib/ --add-modules javafx.fxml,javafx.controler,giftydto",
     "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m -Xlog:disable",
 }

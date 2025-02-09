@@ -1,6 +1,8 @@
 package gifty.dto;
+import java.io.Serializable;
 
-public class UserLogin {
+public class UserLogin implements Serializable  {
+    private static final long serialVersionUID = 1L;
     private String name;
     private String login;
     private String password;

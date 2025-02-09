@@ -1,9 +1,10 @@
 package gifty.dto;
-
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
 
-public class Wish {
+public class Wish implements Serializable {
+    private static final long serialVersionUID = 1L;
     private final Item item;
     private final Date date;
     private final String status;

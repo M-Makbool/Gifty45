@@ -1,15 +1,18 @@
 package gifty.dto;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Item {
+
+public class Item implements Serializable {
+    private static final long serialVersionUID = 1L; // Version control
     private int item_id;
     private String item_name;
     private String category;
     private double price;
     private String status;
 
-    public Item(int item_id, String item_name, String category, double price, String status) {
+    public Item (int item_id, String item_name, String category, double price, String status) {
         this.item_id = item_id;
         this.item_name = item_name.trim().replaceAll("\\s+", " ");
         this.category = category.trim().replaceAll("\\s+", " ");

@@ -1,0 +1,30 @@
+{
+    "java.project.referencedLibraries": [
+        "../javalib/javafx.base.jar",
+        "../javalib/javafx.controls.jar",
+        "../javalib/javafx.fxml.jar",
+        "../javalib/javafx.graphics.jar",
+        "../javalib/javafx.media.jar",
+        "../javalib/javafx.swing.jar",
+        "../javalib/javafx.web.jar",
+        "../javalib/javafx-swt.jar",
+        "../javalib/ojdbc17.jar",
+        "/home/mak/Desktop/java2/Gifty45/javalib/javafx.base.jar",
+        "/home/mak/Desktop/java2/Gifty45/javalib/javafx.controls.jar",
+        "/home/mak/Desktop/java2/Gifty45/javalib/javafx.fxml.jar",
+        "/home/mak/Desktop/java2/Gifty45/javalib/javafx.graphics.jar",
+        "/home/mak/Desktop/java2/Gifty45/javalib/javafx.media.jar",
+        "/home/mak/Desktop/java2/Gifty45/javalib/javafx.swing.jar",
+        "/home/mak/Desktop/java2/Gifty45/javalib/javafx.web.jar",
+        "/home/mak/Desktop/java2/Gifty45/javalib/javafx-swt.jar",
+        "/home/mak/Desktop/java2/Gifty45/javalib/ojdbc17.jar"
+    ],
+    "java.dependency.packagePresentation": "flat",
+    "java.format.settings.url": ".vscode/java-formatter.xml",
+    "java.project.sourcePaths": [
+        "../javalib",
+        ".."
+    ],
+    "jdk.runConfig.vmOptions": "-cp ../javalib/ojdbc17.jar --module-path ../javalib/ --add-modules javafx.controls,javafx.fxml",
+    "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m -Xlog:disable",
+}

@@ -1,0 +1,20 @@
+{
+    "java.project.referencedLibraries": [
+        "../javalib/javafx.base.jar",
+        "../javalib/javafx.controls.jar",
+        "../javalib/javafx.fxml.jar",
+        "../javalib/javafx.graphics.jar",
+        "../javalib/javafx.media.jar",
+        "../javalib/javafx.swing.jar",
+        "../javalib/javafx.web.jar",
+        "../javalib/javafx-swt.jar",
+    ],
+    "java.dependency.packagePresentation": "flat",
+    "java.format.settings.url": ".vscode/java-formatter.xml",
+    "java.project.sourcePaths": [
+        "../javalib",
+        ".."
+    ],
+    "jdk.runConfig.vmOptions": " --module-path ../javalib/ --add-modules javafx.fxml,javafx.controllers",
+    "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m -Xlog:disable",
+}

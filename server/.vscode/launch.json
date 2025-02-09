@@ -8,8 +8,8 @@
             "type": "java",
             "name": "Launch Java Program",
             "request": "launch",
-            "mainClass": "src.App",
-            "vmArgs": "--module-path ../javalib/ --add-modules javafx.controls,javafx.fxml"
+            "mainClass": "App",
+            "vmArgs": "--module-path ../javalib/lib/ --add-modules javafx.controls,javafx.fxml"
         }
     ]
 }

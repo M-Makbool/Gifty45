@@ -1,7 +1,3 @@
-package src;
-
-import gifty.dao.*;
-import gifty.dto.*;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -10,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import gifty.dao.*;
+import gifty.dto.*;
 
 public class App extends Application {
 

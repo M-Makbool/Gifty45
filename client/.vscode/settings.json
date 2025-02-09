@@ -1,20 +1,20 @@
 {
     "java.project.referencedLibraries": [
-        "../javalib/javafx.base.jar",
-        "../javalib/javafx.controls.jar",
-        "../javalib/javafx.fxml.jar",
-        "../javalib/javafx.graphics.jar",
-        "../javalib/javafx.media.jar",
-        "../javalib/javafx.swing.jar",
-        "../javalib/javafx.web.jar",
-        "../javalib/javafx-swt.jar",
+        "../javalib/lib/javafx.base.jar",
+        "../javalib/lib/javafx.controls.jar",
+        "../javalib/lib/javafx.fxml.jar",
+        "../javalib/lib/javafx.graphics.jar",
+        "../javalib/lib/javafx.media.jar",
+        "../javalib/lib/javafx.swing.jar",
+        "../javalib/lib/javafx.web.jar",
+        "../javalib/lib/javafx-swt.jar",
     ],
     "java.dependency.packagePresentation": "flat",
     "java.format.settings.url": ".vscode/java-formatter.xml",
     "java.project.sourcePaths": [
-        "../javalib",
+        "../javalib/lib",
         ".."
     ],
-    "jdk.runConfig.vmOptions": " --module-path ../javalib/ --add-modules javafx.fxml,javafx.controllers",
+    "jdk.runConfig.vmOptions": " --module-path ../javalib/lib/ --add-modules javafx.fxml,javafx.controllers",
     "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx2G -Xms100m -Xlog:disable",
 }

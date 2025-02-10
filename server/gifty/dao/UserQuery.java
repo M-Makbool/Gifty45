@@ -80,6 +80,22 @@ public class UserQuery {
         }
     }
 
+    public static User logUser(UserLogin user) throws SQLException {
+
+        try (PreparedStatement pst = DataBase.getConnection().prepareStatement(
+                " select user_login from users where user_login = ? and Is_Deleted = false AND Password = ? ")) {
+
+            pst.setString(1, user.getLogin());
+            pst.setString(2, user.getPassword());
+
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.getString("user_login").equals(user.getLogin()))
+                return getUser(user);
+            return null;
+        }
+    }
+
     public static int addFriend(UserLogin user, UserLogin friend) throws SQLException {
 
         try (PreparedStatement pst = DataBase.getConnection().prepareStatement(

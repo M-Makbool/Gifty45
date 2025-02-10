@@ -35,6 +35,7 @@ public class Connection extends Thread {
                 e.printStackTrace();
             }
         }
+        interrupt();
         System.out.println("Server stopped.");
     }
 }

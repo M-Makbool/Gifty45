@@ -60,7 +60,7 @@ public class UserQuery {
                 rs.next();
                 user = new User(new UserLogin(rs.getString("user_name"), userlogin.getLogin()),
                         rs.getString("user_email"), rs.getString("Gender"),
-                        rs.getString("telephone"), rs.getDate("DOB"));
+                        rs.getString("telephone"), rs.getDate("DOB"), rs.getDouble("balance"));
             }
             user.setFriendList(new ArrayList<>(getFriends(user)));
             user.setWishList(new ArrayList<>(getWishList(user)));
@@ -237,4 +237,16 @@ public class UserQuery {
 
     }
 
+    public static UserLogin addBalance(UserLogin user, double balance) throws SQLException {
+
+        try (PreparedStatement pst = DataBase.getConnection().prepareStatement(
+                " update users set balance = balance + ? where user_login = ? ")) {
+
+            pst.setDouble(1, balance);
+            pst.setString(2, user.getLogin());
+
+            pst.executeUpdate();
+            return getUser(user);
+        }
+    }
 }

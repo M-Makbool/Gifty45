@@ -13,6 +13,7 @@ CREATE TABLE Users (
     is_deleted BOOLEAN,
     Gender VARCHAR2(10),
     Password VARCHAR2(100),
+    balance NUMBER(10,2), 
     DOB DATE
 );
 

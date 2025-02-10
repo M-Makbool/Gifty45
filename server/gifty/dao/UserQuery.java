@@ -33,8 +33,8 @@ public class UserQuery {
 
     public static int addUser(User user) throws SQLException {
 
-        String query = "INSERT INTO users (user_login, user_email, user_name, telephone, is_deleted, gender, DOB, Password) "
-                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO users (user_login, user_email, user_name, telephone, is_deleted, gender, DOB, Password, balance) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, 0)";
 
         try (PreparedStatement pst = DataBase.getConnection().prepareStatement(query)) {
             pst.setString(1, user.getLogin());

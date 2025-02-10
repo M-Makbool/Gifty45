@@ -4,24 +4,37 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Connection {
+public class Connection extends Thread {
+    private static ServerSocket serverSocket;
+    private static Boolean running;
 
- 
-   public static void main(String[] args) {
-        try (ServerSocket serverSocket = new ServerSocket(5000)) {
-            System.out.println("Server started on port 5000...");
+    @SuppressWarnings("CallToPrintStackTrace")
+    public void serverInit() throws IOException {
 
-            while (true) {
-                Socket socket = serverSocket.accept();
-                new ClientHandler(socket).start(); // Handle client in a new thread
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        serverSocket = new ServerSocket(5000);
+        System.out.println("Server started on port 5000...");
+        running = true;
+        start();
+    }
+
+    public void serverStop() throws IOException {
+        if (serverSocket != null && !serverSocket.isClosed()) {
+            running = false;
+            serverSocket.close();
         }
     }
+
+    @Override
+    @SuppressWarnings("CallToPrintStackTrace")
+    public void run() {
+        while (running) {
+            try {
+                Socket socket = serverSocket.accept();
+                new ClientHandler(socket).start();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.println("Server stopped.");
+    }
 }
-
-
-
-
-

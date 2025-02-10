@@ -57,14 +57,16 @@ public class UserQuery {
             pst.setString(1, userlogin.getLogin());
             User user;
             try (ResultSet rs = pst.executeQuery()) {
-                rs.next();
-                user = new User(new UserLogin(rs.getString("user_name"), userlogin.getLogin()),
-                        rs.getString("user_email"), rs.getString("Gender"),
-                        rs.getString("telephone"), rs.getDate("DOB"), rs.getDouble("balance"));
+                if (rs.next()) {
+                    user = new User(new UserLogin(rs.getString("user_name"), userlogin.getLogin()),
+                            rs.getString("user_email"), rs.getString("Gender"),
+                            rs.getString("telephone"), rs.getDate("DOB"), rs.getDouble("balance"));
+                    user.setFriendList(new ArrayList<>(getFriends(user)));
+                    user.setWishList(new ArrayList<>(getWishList(user)));
+                    return user;
+                }
             }
-            user.setFriendList(new ArrayList<>(getFriends(user)));
-            user.setWishList(new ArrayList<>(getWishList(user)));
-            return user;
+            return null;
         }
     }
 
@@ -90,8 +92,9 @@ public class UserQuery {
 
             ResultSet rs = pst.executeQuery();
 
-            if (rs.getString("user_login").equals(user.getLogin()))
-                return getUser(user);
+            if (rs.next())
+                if (rs.getString("user_login").equals(user.getLogin()))
+                    return getUser(user);
             return null;
         }
     }

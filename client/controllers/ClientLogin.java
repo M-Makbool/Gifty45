@@ -9,6 +9,7 @@ import java.security.NoSuchAlgorithmException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class ClientLogin {
@@ -16,6 +17,9 @@ public class ClientLogin {
 
     @FXML
     private Button btnLogin;
+
+    @FXML
+    private Label msgLabel;
 
     @FXML
     private TextField passUser;
@@ -50,8 +54,20 @@ public class ClientLogin {
             login.getOutput().writeObject("Login");
             login.getOutput().writeObject(user);
 
-            currentUser = (User)login.getInput().readObject();
-            txtUser.setText(currentUser.getName());
+            String responce = (String)login.getInput().readObject();
+
+            switch (responce) {
+
+            case "User":
+                currentUser = (User)login.getInput().readObject();
+                txtUser.setText(currentUser.getName());
+                break;
+
+            case "Not Found":
+                msgLabel.setStyle("-fx-text-fill: red;");
+                msgLabel.setText("User Not Found!");
+                break;
+            }
 
         } catch (IOException e) {
             e.printStackTrace();

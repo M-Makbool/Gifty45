@@ -1,28 +1,21 @@
 
 package gifty;
-import gifty.dto.UserLogin;
+
 import java.io.*;
 import java.net.*;
-import java.util.ArrayList;
 
 public class Connection {
-    public static void connect(String[] args) {
-        try (Socket socket = new Socket("localhost", 5000);
-                ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
-                ObjectInputStream input = new ObjectInputStream(socket.getInputStream())) {
+    private final Socket socket;
+    private final ObjectOutputStream output;
+    private final ObjectInputStream input;
 
-            output.writeObject("GET_USERS"); // Request user list
-
-            ArrayList<UserLogin> users = (ArrayList<UserLogin>)input.readObject(); // Receive
-                                                                                   // users
-            for (UserLogin user : users) {
-                System.out.println("User: " + user.getName());
-                System.out.println("Connected to server...");
-
-            }
-
-        } catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+    public Connection() throws UnknownHostException, IOException {
+        socket = new Socket("localhost", 5000);
+        output = new ObjectOutputStream(socket.getOutputStream());
+        input = new ObjectInputStream(socket.getInputStream());
     }
+
+    public ObjectOutputStream getOutput() throws IOException { return output; }
+
+    public ObjectInputStream getInput() throws IOException { return input; }
 }

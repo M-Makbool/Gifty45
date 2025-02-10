@@ -13,14 +13,21 @@ public class ServerHome {
 
     @FXML
     void AddBalanceAction(ActionEvent event) {
-
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("../fxmls/ServerBalance.fxml"));
+            Stage stage = (Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void AddItemAction(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("../fxmls/ServerItem.fxml"));
-            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            Stage stage = (Stage)((javafx.scene.Node)event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.show();
         } catch (IOException e) {

@@ -36,8 +36,7 @@ public class ClientHandler extends Thread {
 
             case "Register": {
                 User user = (User)input.readObject();
-                User registeredUser = register(user);
-                output.writeObject(registeredUser);
+                register(user);
                 break;
             }
             case "Add Wish": {
@@ -115,14 +114,43 @@ public class ClientHandler extends Thread {
         }
     }
 
-    public User register(User user) {
-        // Implement register logic here
-        return null;
-    }
+    @SuppressWarnings("CallToPrintStackTrace")
+    public void register(User user) {
+        try {
+            int result = UserQuery.addUser(user);
+    
+            if (result > 0) {
+                output.writeObject("User");
+                User registeredUser = UserQuery.getUser(new UserLogin(user.getName(), user.getLogin()));
+                    output.writeObject(registeredUser);
+            } else {  
 
-    public ArrayList<Wish> addWish(Item wish) {
-        // Implement add wish logic here
-        return null;
+                output.writeObject("error didnot register");
+            }
+        } catch (SQLException | IOException e) {
+          
+            e.printStackTrace();
+            
+        }
+    }
+    @SuppressWarnings("CallToPrintStackTrace")
+    public void addWish(Item wish) {
+        try {
+            int result = UserQuery.addWish(currentUser, wish);
+    
+            if (result > 0) {
+                output.writeObject("wish List");
+                ArrayList<Wish> updatedWishList = UserQuery.getWishList(currentUser);
+                    output.writeObject(updatedWishList);
+            } else {
+                output.writeObject(" Wish could not be added to the database");
+            }
+        }
+         catch (SQLException | IOException e) {
+            
+            e.printStackTrace();
+            
+        }
     }
 
     public ArrayList<Wish> removeWish(Wish wish) {

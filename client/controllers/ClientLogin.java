@@ -1,19 +1,21 @@
 package controllers;
 
+import gifty.Client;
 import gifty.Connection;
 import gifty.dto.User;
 import gifty.dto.UserLogin;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class ClientLogin {
-    public static User currentUser;
 
     @FXML
     private Button btnLogin;
@@ -26,6 +28,14 @@ public class ClientLogin {
 
     @FXML
     private TextField txtUser;
+
+    @FXML
+    public void initialize() {
+        if (Client.currentLogin != null) {
+            txtUser.setText(Client.currentLogin.getLogin());
+            passUser.setText(Client.currentLogin.getPassword());
+        }
+    }
 
     private String hash(String password) {
         try {
@@ -44,41 +54,73 @@ public class ClientLogin {
 
     @FXML
     void loginAction(ActionEvent event) {
-        try {
 
-            Connection login = new Connection();
+        msgLabel.setStyle("-fx-text-fill: red;");
 
-            UserLogin user = new UserLogin("", txtUser.getText());
-            user.setPassword(hash(passUser.getText()));
+        if (txtUser.getText().equals("")) {
+            msgLabel.setText("Enter username to login!");
+            return;
+        }
 
-            login.getOutput().writeObject("Login");
-            login.getOutput().writeObject(user);
+        if (passUser.getText().equals("")) {
+            msgLabel.setText("Enter password to login!");
+            return;
+        }
 
-            String responce = (String)login.getInput().readObject();
+        Client.currentLogin = new UserLogin("", txtUser.getText());
+        Client.currentLogin.setPassword(hash(passUser.getText()));
 
-            switch (responce) {
+        Platform.runLater(() -> {
+            try {
 
-            case "User":
-                currentUser = (User)login.getInput().readObject();
-                txtUser.setText(currentUser.getName());
-                break;
+                Connection login = new Connection();
 
-            case "Not Found":
-                msgLabel.setStyle("-fx-text-fill: red;");
-                msgLabel.setText("User Not Found!");
-                break;
+                login.getOutput().writeObject("Login");
+                login.getOutput().writeObject(Client.currentLogin);
+
+                String responce = (String)login.getInput().readObject();
+
+                switch (responce) {
+
+                case "User":
+                    Client.currentUser = (User)login.getInput().readObject();
+                    new Client().switchScene("Home", (Stage)passUser.getScene().getWindow());
+                    break;
+
+                case "Not Found":
+                    msgLabel.setStyle("-fx-text-fill: red;");
+                    msgLabel.setText("User Not Found!");
+                    break;
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
             }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        // if server accept and respond with user data switch to home scene
+        });
     }
 
     @FXML
     void registerAction(ActionEvent event) {
+
+        msgLabel.setStyle("-fx-text-fill: red;");
+
+        if (txtUser.getText().equals("")) {
+            msgLabel.setText("Enter username to register!");
+            return;
+        }
+
+        if (passUser.getText().equals("")) {
+            msgLabel.setText("Enter password to register!");
+            return;
+        }
+
+        Client.currentLogin = new UserLogin("", txtUser.getText());
+        Client.currentLogin.setPassword(hash(passUser.getText()));
+
+        new Client().switchScene("Register", (Stage)passUser.getScene().getWindow());
 
     }
 

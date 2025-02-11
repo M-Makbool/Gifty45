@@ -1,9 +1,17 @@
 package controllers;
 
+import gifty.dto.User;
+import java.io.IOException;
+import java.sql.Date;
+
+import gifty.Client;
+import gifty.Connection;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class ClientRegister {
 
@@ -18,35 +26,84 @@ public class ClientRegister {
 
     @FXML
     public void initialize() {
-        // Correctly populate Gender ChoiceBox
         genderChoiceBox.getItems().addAll("Male", "Female");
-        
-        // Optionally, set a default value
-        genderChoiceBox.setValue("Male");  
+        genderChoiceBox.setValue("Male");
     }
 
     public void handleSubmit() {
-        // Retrieve input values		
-		UserLogin login = new UserLogin(usernameField.getText(),"");	
-        String email = emailField.getText();
-        String username = usernameField.getText();
-        String telephone = telephoneField.getText();
-        String gender = genderChoiceBox.getValue();
-        String dob = (dobPicker.getValue() != null) ? dobPicker.getValue().toString() : "";
-		User user = new User(login,email,telephone,gender,dob);
 
-        // Validate input
-        if (email.isEmpty() || username.isEmpty() || telephone.isEmpty() || gender == null || dob.isEmpty()) {
-            System.out.println("Please fill in all fields.");
+        if (emailField.getText().equals("")) {
+            System.out.println("Enter email!");
             return;
         }
 
-        // Print user details (Replace this with database logic if needed)
-        System.out.println("User Registered Successfully!");
-        System.out.println("Email: " + email);
-        System.out.println("Username: " + username);
-        System.out.println("Telephone: " + telephone);
-        System.out.println("Gender: " + gender);
-        System.out.println("Date of Birth: " + dob);
+        if (usernameField.getText().equals("")) {
+            System.out.println("Enter username!");
+            return;
+        }
+
+        if (telephoneField.getText().equals("")) {
+            System.out.println("Enter telephone!");
+            return;
+        }
+
+        if (genderChoiceBox.getValue() == null) {
+            System.out.println("Select gender!");
+            return;
+        }
+
+        if (dobPicker.getValue() == null) {
+            System.out.println("Select date of birth!");
+            return;
+        }
+
+        String email = emailField.getText();
+        String fullname = usernameField.getText();
+        String telephone = telephoneField.getText();
+        String gender = genderChoiceBox.getValue();
+        Date dob = Date.valueOf(dobPicker.getValue());
+
+        Client.currentLogin.setName(fullname);
+        Client.currentUser = new User(Client.currentLogin, email, gender, telephone, dob, 0);
+        Client.currentUser.setPassword(Client.currentLogin.getPassword());
+
+        Platform.runLater(() -> {
+            try {
+
+                Connection register = new Connection();
+
+                register.getOutput().writeObject("Register");
+                register.getOutput().writeObject(Client.currentUser);
+
+                String responce = (String)register.getInput().readObject();
+
+                switch (responce) {
+
+                case "User":
+                    Client.currentUser = (User)register.getInput().readObject();
+                    new Client().switchScene("Login", (Stage)emailField.getScene().getWindow());
+                    break;
+
+                case "Error":
+                    // msgLabel.setStyle("-fx-text-fill: red;");
+                    // msgLabel.setText("User Not Found!");
+                    System.out.println("Not Found");
+                    break;
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+        });
+
+    }
+
+    public void handleBackToLogin() {
+
+        new Client().switchScene("Login", (Stage)emailField.getScene().getWindow());
+
     }
 }

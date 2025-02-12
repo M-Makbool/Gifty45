@@ -8,48 +8,55 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ClientLogin">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ClientLogin">
    <children>
-      <Label layoutX="266.0" layoutY="77.0" text="WLECOME BACK">
+      <Label layoutX="350.0" layoutY="221.0" text="WLECOME BACK" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="350.0">
          <font>
-            <Font name="System Bold" size="32.0" />
+            <Font name="System Bold" size="47.0" />
          </font>
       </Label>
-      <Label layoutX="282.0" layoutY="119.0" prefHeight="20.0" prefWidth="222.0" text="Enter your username and password ">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="360.0" layoutY="280.0" prefHeight="20.0" prefWidth="360.0" text="Enter your username and password " textAlignment="CENTER" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0">
          <font>
-            <Font size="14.0" />
+            <Font size="21.0" />
          </font>
       </Label>
-      <TextField fx:id="txtUser" layoutX="268.0" layoutY="175.0" prefHeight="25.0" prefWidth="251.0" />
-      <Label layoutX="268.0" layoutY="154.0" text="Username">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="268.0" layoutY="210.0" text="Password">
+      <TextField fx:id="txtUser" alignment="CENTER" layoutX="360.0" layoutY="377.0" prefHeight="25.0" prefWidth="360.0" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0" />
+      <Label layoutX="360.0" layoutY="356.0" text="Username" AnchorPane.leftAnchor="360.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <PasswordField fx:id="passUser" layoutX="267.0" layoutY="232.0" prefHeight="25.0" prefWidth="251.0" />
-      <Label layoutX="268.0" layoutY="259.0" text="Forgot Password?" textFill="#b5b4b4">
+      <Label layoutX="360.0" layoutY="412.0" text="Password" AnchorPane.leftAnchor="360.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="passUser" alignment="CENTER" layoutX="360.0" layoutY="434.0" prefHeight="25.0" prefWidth="360.0" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0" />
+      <Label layoutX="360.0" layoutY="461.0" text="Forgot Password?" textFill="#b5b4b4" AnchorPane.leftAnchor="360.0">
          <font>
             <Font size="10.0" />
          </font>
       </Label>
-      <Button fx:id="btnLogin" layoutX="268.0" layoutY="290.0" mnemonicParsing="false" onAction="#loginAction" prefHeight="25.0" prefWidth="251.0" style="-fx-background-color: black;" text="Login" textFill="WHITE">
+      <Button fx:id="btnLogin" alignment="CENTER" contentDisplay="CENTER" layoutX="360.0" layoutY="520.0" mnemonicParsing="false" onAction="#loginAction" prefHeight="25.0" prefWidth="360.0" style="-fx-background-color: black;" text="Login" textFill="WHITE" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Label layoutX="384.0" layoutY="343.0" text="OR" textFill="#bcbcbc" />
-      <Line endX="100.0" layoutX="270.0" layoutY="351.0" startX="-1.0" stroke="#b5b5b5" />
-      <Line endX="100.0" layoutX="413.0" layoutY="351.0" startX="-1.0" stroke="#b5b5b5" />
-      <Button layoutX="267.0" layoutY="376.0" mnemonicParsing="false" onAction="#registerAction" prefHeight="25.0" prefWidth="244.0" text="Create New Account">
+      <Label layoutX="531.0" layoutY="561.0" text="OR" textFill="#bcbcbc" AnchorPane.leftAnchor="531.0" AnchorPane.rightAnchor="530.0" />
+      <Line endX="150.0" layoutX="360.5" layoutY="570.0" stroke="#b5b5b5" AnchorPane.leftAnchor="360.0" />
+      <Line endX="150.0" layoutX="569.5" layoutY="570.0" stroke="#b5b5b5" AnchorPane.rightAnchor="360.0" />
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="360.0" layoutY="590.0" mnemonicParsing="false" onAction="#registerAction" prefHeight="25.0" prefWidth="360.0" style="-fx-background-color: gray;" text="Create New Account" textFill="WHITE" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Label fx:id="msgLabel" layoutX="268.0" layoutY="320.0" />
+      <Label fx:id="loginLabel" layoutX="360.0" layoutY="500.0" textFill="RED" AnchorPane.leftAnchor="360.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="360.0" layoutY="48.0" text="Gifty45" textAlignment="CENTER" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0">
+         <font>
+            <Font name="System Bold" size="96.0" />
+         </font>
+      </Label>
+      <Label fx:id="usernameLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="687.0" layoutY="356.0" textAlignment="RIGHT" textFill="RED" AnchorPane.rightAnchor="360.0" />
+      <Label fx:id="passwordLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="687.0" layoutY="412.0" textAlignment="RIGHT" textFill="RED" AnchorPane.rightAnchor="360.0" />
    </children>
 </AnchorPane>

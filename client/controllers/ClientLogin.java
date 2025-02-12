@@ -21,7 +21,13 @@ public class ClientLogin {
     private Button btnLogin;
 
     @FXML
-    private Label msgLabel;
+    private Label loginLabel;
+
+    @FXML
+    private Label passwordLabel;
+
+    @FXML
+    private Label usernameLabel;
 
     @FXML
     private TextField passUser;
@@ -31,10 +37,11 @@ public class ClientLogin {
 
     @FXML
     public void initialize() {
-        if (Client.currentLogin != null) {
+
+        btnLogin.setDefaultButton(true);
+
+        if (Client.currentLogin != null)
             txtUser.setText(Client.currentLogin.getLogin());
-            passUser.setText(Client.currentLogin.getPassword());
-        }
     }
 
     private String hash(String password) {
@@ -55,15 +62,13 @@ public class ClientLogin {
     @FXML
     void loginAction(ActionEvent event) {
 
-        msgLabel.setStyle("-fx-text-fill: red;");
-
         if (txtUser.getText().equals("")) {
-            msgLabel.setText("Enter username to login!");
+            usernameLabel.setText("Enter username to login!");
             return;
         }
 
         if (passUser.getText().equals("")) {
-            msgLabel.setText("Enter password to login!");
+            passwordLabel.setText("Enter password to login!");
             return;
         }
 
@@ -88,8 +93,7 @@ public class ClientLogin {
                     break;
 
                 case "Not Found":
-                    msgLabel.setStyle("-fx-text-fill: red;");
-                    msgLabel.setText("User Not Found!");
+                    loginLabel.setText("Wrong username or password!");
                     break;
                 }
 
@@ -105,15 +109,13 @@ public class ClientLogin {
     @FXML
     void registerAction(ActionEvent event) {
 
-        msgLabel.setStyle("-fx-text-fill: red;");
-
         if (txtUser.getText().equals("")) {
-            msgLabel.setText("Enter username to register!");
+            usernameLabel.setText("Enter username to register!");
             return;
         }
 
         if (passUser.getText().equals("")) {
-            msgLabel.setText("Enter password to register!");
+            passwordLabel.setText("Enter password to register!");
             return;
         }
 

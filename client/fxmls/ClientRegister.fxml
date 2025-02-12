@@ -9,57 +9,71 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ClientRegister">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ClientRegister">
     <children>
-        <Label layoutX="266.0" layoutY="77.0" text="REGISTER">
+          <Label alignment="CENTER" contentDisplay="CENTER" layoutX="360.0" layoutY="48.0" text="Gifty45" textAlignment="CENTER" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0">
+            <font>
+                <Font name="System Bold" size="96.0" />
+            </font>
+        </Label>
+        <Label layoutX="380.0" layoutY="150.0" text="REGISTER" AnchorPane.leftAnchor="390.0">
             <font>
                 <Font name="System Bold" size="32.0" />
             </font>
         </Label>
-        <Label layoutX="282.0" layoutY="119.0" prefHeight="20.0" prefWidth="222.0" text="Enter your details below">
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="394.0" layoutY="200.0" prefHeight="20.0" prefWidth="222.0" text="Enter your details below" textAlignment="CENTER" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0">
+            <font>
+                <Font size="21.0" />
+            </font>
+        </Label>
+        <Label layoutX="380.0" layoutY="250.0" text="Email" AnchorPane.leftAnchor="360.0">
             <font>
                 <Font size="14.0" />
             </font>
         </Label>
-        <Label layoutX="268.0" layoutY="154.0" text="Email">
+        <TextField fx:id="emailField" layoutX="380.0" layoutY="270.0" prefHeight="25.0" promptText="Enter your email" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0" />
+        <Label layoutX="380.0" layoutY="300.0" text="Full Name" AnchorPane.leftAnchor="360.0">
             <font>
                 <Font size="14.0" />
             </font>
         </Label>
-        <TextField fx:id="emailField" layoutX="268.0" layoutY="175.0" prefHeight="25.0" prefWidth="251.0" promptText="Enter your email" />
-        <Label layoutX="268.0" layoutY="210.0" text="Full Name">
+        <TextField fx:id="usernameField" layoutX="380.0" layoutY="320.0" prefHeight="25.0" promptText="Enter your Full Name" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0" />
+        <Label layoutX="380.0" layoutY="350.0" text="Telephone" AnchorPane.leftAnchor="360.0">
             <font>
                 <Font size="14.0" />
             </font>
         </Label>
-        <TextField fx:id="usernameField" layoutX="268.0" layoutY="232.0" prefHeight="25.0" prefWidth="251.0" promptText="Enter your Full Name" />
-        <Label layoutX="268.0" layoutY="259.0" text="Telephone">
+        <TextField fx:id="telephoneField" layoutX="380.0" layoutY="370.0" prefHeight="25.0" promptText="Enter your phone number" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0" />
+        <Label layoutX="380.0" layoutY="400.0" text="Gender" AnchorPane.leftAnchor="360.0">
             <font>
                 <Font size="14.0" />
             </font>
         </Label>
-        <TextField fx:id="telephoneField" layoutX="268.0" layoutY="281.0" prefHeight="25.0" prefWidth="251.0" promptText="Enter your phone number" />
-        <Label layoutX="268.0" layoutY="308.0" text="Gender">
+        <ChoiceBox fx:id="genderChoiceBox" layoutX="380.0" layoutY="420.0" prefHeight="25.0" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0" />
+        <Label layoutX="380.0" layoutY="450.0" text="Date of Birth" AnchorPane.leftAnchor="360.0">
             <font>
                 <Font size="14.0" />
             </font>
         </Label>
-        <ChoiceBox fx:id="genderChoiceBox" layoutX="268.0" layoutY="330.0" prefHeight="25.0" prefWidth="251.0" />
-        <Label layoutX="268.0" layoutY="357.0" text="Date of Birth">
-            <font>
-                <Font size="14.0" />
-            </font>
-        </Label>
-        <DatePicker fx:id="dobPicker" layoutX="268.0" layoutY="379.0" prefHeight="25.0" prefWidth="251.0" />
-        <Button layoutX="268.0" layoutY="420.0" mnemonicParsing="false" onAction="#handleSubmit" prefHeight="25.0" prefWidth="251.0" style="-fx-background-color: black;" text="Submit" textFill="WHITE">
+        <DatePicker fx:id="dobPicker" layoutX="380.0" layoutY="470.0" prefHeight="25.0" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0" />
+        <Button layoutX="380.0" layoutY="520.0" mnemonicParsing="false" onAction="#handleSubmit" prefHeight="25.0" style="-fx-background-color: black;" text="Submit" textFill="WHITE" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0">
             <font>
                 <Font size="14.0" />
             </font>
         </Button>
-        <Button layoutX="268.0" layoutY="460.0" mnemonicParsing="false" onAction="#handleBackToLogin" prefHeight="25.0" prefWidth="251.0" style="-fx-background-color: grey;" text="Back to Login" textFill="WHITE">
+        <Button layoutX="380.0" layoutY="590.0" mnemonicParsing="false" onAction="#handleBackToLogin" prefHeight="25.0" style="-fx-background-color: grey;" text="Back to Login" textFill="WHITE" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0">
             <font>
                 <Font size="14.0" />
             </font>
         </Button>
+      <Label layoutX="531.0" layoutY="561.0" text="OR" textFill="#bcbcbc" AnchorPane.leftAnchor="531.0" AnchorPane.rightAnchor="530.0" />
+      <Line endX="150.0" layoutX="360.5" layoutY="570.0" stroke="#b5b5b5" AnchorPane.leftAnchor="360.0" />
+      <Line endX="150.0" layoutX="569.5" layoutY="570.0" stroke="#b5b5b5" AnchorPane.rightAnchor="360.0" />
+      <Label fx:id="emailLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="694.0" layoutY="250.0" textAlignment="RIGHT" AnchorPane.rightAnchor="360.0" />
+      <Label fx:id="fullnameLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="704.0" layoutY="300.0" textAlignment="RIGHT" AnchorPane.rightAnchor="360.0" />
+      <Label fx:id="telephoneLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="714.0" layoutY="350.0" textAlignment="RIGHT" AnchorPane.rightAnchor="360.0" />
+      <Label fx:id="genderLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="714.0" layoutY="400.0" textAlignment="RIGHT" AnchorPane.rightAnchor="360.0" />
+      <Label fx:id="dobLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="714.0" layoutY="450.0" textAlignment="RIGHT" AnchorPane.rightAnchor="360.0" />
+      <Label fx:id="registerLabel" layoutX="360.0" layoutY="500.0" textFill="RED" AnchorPane.leftAnchor="360.0" />
     </children>
 </AnchorPane>

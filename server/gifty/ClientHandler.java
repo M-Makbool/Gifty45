@@ -103,7 +103,7 @@ public class ClientHandler extends Thread {
 
             if (currentUser != null) {
                 output.writeObject("User");
-                output.writeObject(user);
+                output.writeObject(currentUser);
             } else {
                 output.writeObject("Not Found");
             }

@@ -10,10 +10,29 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class ClientRegister {
+
+    @FXML
+    private Label dobLabel;
+
+    @FXML
+    private Label emailLabel;
+
+    @FXML
+    private Label fullnameLabel;
+
+    @FXML
+    private Label genderLabel;
+
+    @FXML
+    private Label telephoneLabel;
+
+    @FXML
+    private Label registerLabel;
 
     @FXML
     private TextField emailField, usernameField, telephoneField;
@@ -33,27 +52,27 @@ public class ClientRegister {
     public void handleSubmit() {
 
         if (emailField.getText().equals("")) {
-            System.out.println("Enter email!");
+            emailLabel.setText("Enter your email!");
             return;
         }
 
         if (usernameField.getText().equals("")) {
-            System.out.println("Enter username!");
+            fullnameLabel.setText("Enter your Full Name!");
             return;
         }
 
         if (telephoneField.getText().equals("")) {
-            System.out.println("Enter telephone!");
+            telephoneLabel.setText("Enter your telephone!");
             return;
         }
 
         if (genderChoiceBox.getValue() == null) {
-            System.out.println("Select gender!");
+            genderLabel.setText("Select your gender!");
             return;
         }
 
         if (dobPicker.getValue() == null) {
-            System.out.println("Select date of birth!");
+            dobLabel.setText("Select your date of birth!");
             return;
         }
 
@@ -85,9 +104,7 @@ public class ClientRegister {
                     break;
 
                 case "Error":
-                    // msgLabel.setStyle("-fx-text-fill: red;");
-                    // msgLabel.setText("User Not Found!");
-                    System.out.println("Not Found");
+                    registerLabel.setText("Register Error");
                     break;
                 }
 

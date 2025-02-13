@@ -8,6 +8,7 @@ import gifty.Client;
 import gifty.Connection;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -15,6 +16,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class ClientRegister {
+
+    @FXML
+    private Button btnRegister;
 
     @FXML
     private Label dobLabel;
@@ -45,36 +49,47 @@ public class ClientRegister {
 
     @FXML
     public void initialize() {
+        btnRegister.setDefaultButton(true);
         genderChoiceBox.getItems().addAll("Male", "Female");
-        genderChoiceBox.setValue("Male");
     }
 
     public void handleSubmit() {
 
+        emailLabel.setText("");
+        fullnameLabel.setText("");
+        telephoneLabel.setText("");
+        genderLabel.setText("");
+        dobLabel.setText("");
+
+        boolean missing = false;
+
         if (emailField.getText().equals("")) {
             emailLabel.setText("Enter your email!");
-            return;
+            missing = true;
         }
 
         if (usernameField.getText().equals("")) {
             fullnameLabel.setText("Enter your Full Name!");
-            return;
+            missing = true;
         }
 
         if (telephoneField.getText().equals("")) {
             telephoneLabel.setText("Enter your telephone!");
-            return;
+            missing = true;
         }
 
         if (genderChoiceBox.getValue() == null) {
             genderLabel.setText("Select your gender!");
-            return;
+            missing = true;
         }
 
         if (dobPicker.getValue() == null) {
             dobLabel.setText("Select your date of birth!");
-            return;
+            missing = true;
         }
+
+        if (missing)
+            return;
 
         String email = emailField.getText();
         String fullname = usernameField.getText();

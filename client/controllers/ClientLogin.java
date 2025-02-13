@@ -62,15 +62,23 @@ public class ClientLogin {
     @FXML
     void loginAction(ActionEvent event) {
 
+        usernameLabel.setText("");
+        passwordLabel.setText("");
+
+        boolean missing = false;
+
         if (txtUser.getText().equals("")) {
             usernameLabel.setText("Enter username to login!");
-            return;
+            missing = true;
         }
 
         if (passUser.getText().equals("")) {
             passwordLabel.setText("Enter password to login!");
-            return;
+            missing = true;
         }
+
+        if (missing)
+            return;
 
         Client.currentLogin = new UserLogin("", txtUser.getText());
         Client.currentLogin.setPassword(hash(passUser.getText()));

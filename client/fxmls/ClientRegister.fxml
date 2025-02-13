@@ -56,7 +56,7 @@
             </font>
         </Label>
         <DatePicker fx:id="dobPicker" layoutX="380.0" layoutY="470.0" prefHeight="25.0" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0" />
-        <Button layoutX="380.0" layoutY="520.0" mnemonicParsing="false" onAction="#handleSubmit" prefHeight="25.0" style="-fx-background-color: black;" text="Submit" textFill="WHITE" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0">
+        <Button fx:id="btnRegister" layoutX="380.0" layoutY="520.0" mnemonicParsing="false" onAction="#handleSubmit" prefHeight="25.0" style="-fx-background-color: black;" text="Submit" textFill="WHITE" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0">
             <font>
                 <Font size="14.0" />
             </font>
@@ -69,11 +69,11 @@
       <Label layoutX="531.0" layoutY="561.0" text="OR" textFill="#bcbcbc" AnchorPane.leftAnchor="531.0" AnchorPane.rightAnchor="530.0" />
       <Line endX="150.0" layoutX="360.5" layoutY="570.0" stroke="#b5b5b5" AnchorPane.leftAnchor="360.0" />
       <Line endX="150.0" layoutX="569.5" layoutY="570.0" stroke="#b5b5b5" AnchorPane.rightAnchor="360.0" />
-      <Label fx:id="emailLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="694.0" layoutY="250.0" textAlignment="RIGHT" AnchorPane.rightAnchor="360.0" />
-      <Label fx:id="fullnameLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="704.0" layoutY="300.0" textAlignment="RIGHT" AnchorPane.rightAnchor="360.0" />
-      <Label fx:id="telephoneLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="714.0" layoutY="350.0" textAlignment="RIGHT" AnchorPane.rightAnchor="360.0" />
-      <Label fx:id="genderLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="714.0" layoutY="400.0" textAlignment="RIGHT" AnchorPane.rightAnchor="360.0" />
-      <Label fx:id="dobLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="714.0" layoutY="450.0" textAlignment="RIGHT" AnchorPane.rightAnchor="360.0" />
+      <Label fx:id="emailLabel" textFill="RED" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="694.0" layoutY="250.0" textAlignment="RIGHT" AnchorPane.rightAnchor="360.0" />
+      <Label fx:id="fullnameLabel" textFill="RED" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="704.0" layoutY="300.0" textAlignment="RIGHT" AnchorPane.rightAnchor="360.0" />
+      <Label fx:id="telephoneLabel" textFill="RED" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="714.0" layoutY="350.0" textAlignment="RIGHT" AnchorPane.rightAnchor="360.0" />
+      <Label fx:id="genderLabel" textFill="RED" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="714.0" layoutY="400.0" textAlignment="RIGHT" AnchorPane.rightAnchor="360.0" />
+      <Label fx:id="dobLabel" textFill="RED" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="714.0" layoutY="450.0" textAlignment="RIGHT" AnchorPane.rightAnchor="360.0" />
       <Label fx:id="registerLabel" layoutX="360.0" layoutY="500.0" textFill="RED" AnchorPane.leftAnchor="360.0" />
     </children>
 </AnchorPane>

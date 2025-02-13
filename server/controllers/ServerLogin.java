@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -17,6 +18,12 @@ public class ServerLogin {
 
     @FXML
     private TextField txtUser;
+
+    @FXML
+    private Button btnLogin;
+
+    @FXML
+    public void initialize() { btnLogin.setDefaultButton(true); }
 
     private String hash(String password) {
         try {
@@ -43,7 +50,7 @@ public class ServerLogin {
             System.out.println("hello server");
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("../fxmls/ServerHome.fxml"));
-                Stage stage = (Stage) txtPass.getScene().getWindow();
+                Stage stage = (Stage)txtPass.getScene().getWindow();
                 stage.setScene(new Scene(root));
                 stage.show();
             } catch (IOException e) {

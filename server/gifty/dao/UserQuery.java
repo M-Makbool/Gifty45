@@ -124,7 +124,7 @@ public class UserQuery {
         }
     }
 
-    public int removeFriend(UserLogin user, UserLogin friend) throws SQLException {
+    public static int removeFriend(UserLogin user, UserLogin friend) throws SQLException {
 
         String query = "UPDATE friends SET status = 'Removed' "
                 + "WHERE (user_login = ? AND friend_login = ?) "

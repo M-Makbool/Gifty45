@@ -127,8 +127,7 @@ public class UserQuery {
 
     public static int removeFriend(UserLogin user, UserLogin friend) throws SQLException {
 
-        String query = "UPDATE friends SET status = 'Removed' "
-                + "WHERE (user_login = ? AND friend_login = ?) "
+        String query = "DELETE FROM friends " + "WHERE (user_login = ? AND friend_login = ?) "
                 + "OR (friend_login = ? AND user_login = ?)";
 
         try (PreparedStatement pst = DataBase.getConnection().prepareStatement(query)) {
@@ -145,13 +144,16 @@ public class UserQuery {
 
         String query = "SELECT u.User_login as User_login, f.STATUS as STATUS " + "FROM users u "
                 + "JOIN friends f ON u.User_login = f.Friend_login OR u.User_login = f.User_login "
-                + "WHERE (f.User_login = ? OR f.Friend_login = ?) And u.User_login <> ? ";
+                + "WHERE (f.User_login = ? OR f.Friend_login = ?) And f.STATUS = 'ACCEPTED' "
+                + "AND u.User_login <> ? " + "UNION " + "SELECT User_login, STATUS "
+                + "FROM friends " + "WHERE Friend_login = ? And STATUS = 'REQUESTED' ";
 
         try (PreparedStatement pst = DataBase.getConnection().prepareStatement(query)) {
 
             pst.setString(1, userLogin.getLogin());
             pst.setString(2, userLogin.getLogin());
             pst.setString(3, userLogin.getLogin());
+            pst.setString(4, userLogin.getLogin());
 
             ArrayList<Friend> friends = new ArrayList<>();
 

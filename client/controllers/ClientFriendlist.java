@@ -5,7 +5,6 @@ import java.io.IOException;
 import gifty.Client;
 import gifty.Connection;
 import gifty.dto.Friend;
-import gifty.dto.User;
 import gifty.dto.UserLogin;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -28,9 +27,10 @@ public class ClientFriendlist {
     private ScrollPane friendlistPane;
 
     @FXML
-    void initialize() {
+    private ScrollPane wishlistPane;
 
-    }
+    @FXML
+    void initialize() { friendlistAction(new ActionEvent()); }
 
     @FXML
     void addfriendAction(ActionEvent event) {
@@ -43,7 +43,6 @@ public class ClientFriendlist {
                 Connection addfriend = new Connection();
 
                 addfriend.getOutput().writeObject("Add Friend");
-                System.out.println(friend.getLogin());
                 addfriend.getOutput().writeObject(friend);
 
                 String responce = (String)addfriend.getInput().readObject();
@@ -51,13 +50,9 @@ public class ClientFriendlist {
                 switch (responce) {
 
                 case "User":
-                    Client.currentUser = (User)addfriend.getInput().readObject();
+                    friend = (UserLogin)addfriend.getInput().readObject();
                     addfriendLabel.setStyle("-fx-text-fill: green;");
-                    for (UserLogin friends : Client.currentUser.getfriendList())
-                        if (friends.getLogin().equals(friend.getLogin())) {
-                            addfriendLabel.setText("Friend Request Sended to " + friends.getName());
-                            break;
-                        }
+                    addfriendLabel.setText("Friend Request Sended to " + friend.getName());
                     break;
 
                 case "Not Found":
@@ -79,63 +74,67 @@ public class ClientFriendlist {
 
         VBox frindes = new VBox();
 
-        try {
+        Platform.runLater(() -> {
 
-            for (Friend friend : Client.currentUser.getfriendList()) {
+            try {
 
-                if (friend.getStatus().equals("ACCEPTED")) {
+                for (Friend friend : Client.currentUser.getfriendList()) {
 
-                    FXMLLoader loader = new FXMLLoader(
-                            getClass().getResource("../fxmls/friendListFriend.fxml"));
-                    friendListFriend controller = new friendListFriend();
-                    loader.setController(controller);
+                    if (friend.getStatus().equals("ACCEPTED")) {
 
-                    frindes.getChildren().add(loader.load());
+                        FXMLLoader loader = new FXMLLoader(
+                                getClass().getResource("../fxmls/friendListFriend.fxml"));
+                        friendListFriend controller = new friendListFriend();
+                        loader.setController(controller);
 
-                    controller.setFullnameLabel(friend.getName());
-                    controller.setUserLoginLabel(friend.getLogin());
-                    controller.setDobLabel1(friend.getDateOfBirth().toString());
+                        frindes.getChildren().add(loader.load());
+
+                        controller.setFullnameLabel(friend.getName());
+                        controller.setUserLoginLabel(friend.getLogin());
+                        controller.setDobLabel1(friend.getDateOfBirth().toString());
+                    }
                 }
+
+                friendlistPane.setContent(frindes);
+
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+        });
 
-            friendlistPane.setContent(frindes);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     @FXML
     void friendrequestAction(ActionEvent event) {
         VBox frindes = new VBox();
 
-        try {
+        Platform.runLater(() -> {
 
-            for (Friend friend : Client.currentUser.getfriendList()) {
+            try {
 
-                if (friend.getStatus().equals("REQUESTED")) {
+                for (Friend friend : Client.currentUser.getfriendList()) {
 
-                    FXMLLoader loader = new FXMLLoader(
-                            getClass().getResource("../fxmls/friendListRequest.fxml"));
-                    friendListReuest controller = new friendListReuest();
-                    loader.setController(controller);
+                    if (friend.getStatus().equals("REQUESTED")) {
 
-                    frindes.getChildren().add(loader.load());
+                        FXMLLoader loader = new FXMLLoader(
+                                getClass().getResource("../fxmls/friendListRequest.fxml"));
+                        friendListReuest controller = new friendListReuest();
+                        loader.setController(controller);
 
-                    controller.setFullnameLabel(friend.getName());
-                    controller.setUserLoginLabel(friend.getLogin());
-                    controller.setDobLabel1(friend.getDateOfBirth().toString());
+                        frindes.getChildren().add(loader.load());
+
+                        controller.setFullnameLabel(friend.getName());
+                        controller.setUserLoginLabel(friend.getLogin());
+                        controller.setDobLabel1(friend.getDateOfBirth().toString());
+                    }
                 }
+
+                friendlistPane.setContent(frindes);
+
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-
-            friendlistPane.setContent(frindes);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    void friendlist(Object frinObject) {
+        });
 
     }
 

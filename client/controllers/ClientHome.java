@@ -3,6 +3,7 @@ package controllers;
 import java.io.IOException;
 
 import gifty.Client;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,27 +36,36 @@ public class ClientHome {
 
     @FXML
     void friendlistAction(ActionEvent event) {
-        try {
+        Platform.runLater(() -> {
 
-            Node friendlist = FXMLLoader
-                    .load(getClass().getResource("../fxmls/ClientFriendList.fxml"));
-            mainPane.getChildren().setAll(friendlist);
+            try {
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+                Node friendlist = FXMLLoader
+                        .load(getClass().getResource("../fxmls/ClientFriendList.fxml"));
+                mainPane.getChildren().setAll(friendlist);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
     }
 
     @FXML
     void wishlistAction(ActionEvent event) {
-        try {
+        Platform.runLater(() -> {
 
-            Node wishlist = FXMLLoader.load(getClass().getResource("../fxmls/ClientWishList.fxml"));
-            mainPane.getChildren().setAll(wishlist);
+            try {
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+                Node wishlist = FXMLLoader
+                        .load(getClass().getResource("../fxmls/ClientWishList.fxml"));
+                mainPane.getChildren().setAll(wishlist);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
     }
 
     @FXML

@@ -197,8 +197,8 @@ public class ClientHandler extends Thread {
 
             if (result > 0) {
                 output.writeObject("User");
-                currentUser = UserQuery.getUser(currentUser);
-                output.writeObject(currentUser);
+                friend = UserQuery.getUser(friend);
+                output.writeObject(friend);
             } else {
                 output.writeObject("Not Found");
             }
@@ -234,13 +234,13 @@ public class ClientHandler extends Thread {
             int result = UserQuery.removeFriend(currentUser, friend);
 
             if (result > 0) {
-                ArrayList<Friend> updatedFriendsList = UserQuery.getFriends(currentUser);
+                currentUser = UserQuery.getUser(currentUser);
 
-                output.writeObject("updatedFriendsList");
-                output.writeObject(updatedFriendsList);
+                output.writeObject("User");
+                output.writeObject(currentUser);
             } else {
 
-                output.writeObject("Remove Friend Failed: Friend could not be removed.");
+                output.writeObject("Not Found");
             }
         } catch (SQLException | IOException e) {
 

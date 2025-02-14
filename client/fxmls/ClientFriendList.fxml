@@ -2,16 +2,18 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="810.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ClientFriendlist">
    <children>
-      <SplitPane dividerPositions="0.599009900990099" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <SplitPane dividerPositions="0.7252475247524752" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
@@ -19,24 +21,33 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="46.0" prefWidth="804.0" spacing="30.0">
                            <children>
-                            <Button alignment="CENTER" contentDisplay="CENTER" minWidth="100.0" mnemonicParsing="false" prefWidth="150.0" text="Friend List" />
-                              <Button alignment="CENTER" contentDisplay="CENTER" minWidth="100.0" mnemonicParsing="false" prefWidth="150.0" text="Friend Requests" />
+                            <Button alignment="CENTER" contentDisplay="CENTER" minWidth="100.0" mnemonicParsing="false" onAction="#friendlistAction" prefWidth="150.0" text="Friend List" />
+                              <Button alignment="CENTER" contentDisplay="CENTER" minWidth="100.0" mnemonicParsing="false" onAction="#friendrequestAction" prefWidth="150.0" text="Friend Requests" />
                            </children>
                            <padding>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </padding>
                         </HBox>
-                        <ScrollPane prefHeight="634.0" prefWidth="567.0" VBox.vgrow="ALWAYS" />
-                        <HBox spacing="7.0">
+                        <ScrollPane fx:id="friendlistPane" prefHeight="634.0" prefWidth="567.0" VBox.vgrow="ALWAYS" />
+                        <HBox alignment="BOTTOM_CENTER" spacing="7.0">
                            <children>
-                              <TextField minWidth="200.0" prefHeight="26.0" prefWidth="453.0" promptText="Enter username to add friend" />
-                              <Button minWidth="85.0" mnemonicParsing="false" text="Add Friend" />
+                              <VBox>
+                                 <children>
+                                    <Label fx:id="addfriendLabel" textFill="RED">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="addfriendField" minWidth="200.0" prefHeight="26.0" prefWidth="453.0" promptText="Enter username to add friend" />
+                                 </children>
+                              </VBox>
+                              <Button minWidth="85.0" mnemonicParsing="false" onAction="#addfriendAction" text="Add Friend" />
                            </children>
                            <VBox.margin>
                               <Insets />
                            </VBox.margin>
                            <padding>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                              <Insets bottom="15.0" left="10.0" right="10.0" top="5.0" />
                            </padding>
                         </HBox>
                      </children>

@@ -13,7 +13,7 @@ public class ClientHandler extends Thread {
     private final Socket socket;
     private final ObjectOutputStream output;
     private final ObjectInputStream input;
-    private User currentUser;
+    private static User currentUser;
 
     public ClientHandler(Socket soc) throws IOException {
         this.socket = soc;
@@ -114,8 +114,7 @@ public class ClientHandler extends Thread {
 
             if (result > 0) {
                 output.writeObject("User");
-                User registeredUser = UserQuery
-                        .getUser(new UserLogin(user.getName(), user.getLogin()));
+                User registeredUser = UserQuery.getUser(user);
                 output.writeObject(registeredUser);
             } else {
 
@@ -197,11 +196,11 @@ public class ClientHandler extends Thread {
             int result = UserQuery.addFriend(currentUser, friend);
 
             if (result > 0) {
-
-                output.writeObject("friend");
-                output.writeObject(friend);
+                output.writeObject("User");
+                currentUser = UserQuery.getUser(currentUser);
+                output.writeObject(currentUser);
             } else {
-                output.writeObject("Add Friend Failed: Friend request could not be sent.");
+                output.writeObject("Not Found");
             }
         } catch (SQLException | IOException e) {
 
@@ -216,11 +215,11 @@ public class ClientHandler extends Thread {
             int result = UserQuery.acceptFriend(currentUser, friend);
 
             if (result > 0) {
-                ArrayList<UserLogin> updatedFriendsList = UserQuery.getFriends(currentUser);
-                output.writeObject("updatedFriendsList");
-                output.writeObject(updatedFriendsList);
+                output.writeObject("User");
+                currentUser = UserQuery.getUser(currentUser);
+                output.writeObject(currentUser);
             } else {
-                output.writeObject("Accept Friend Failed: Friend request could not be accepted.");
+                output.writeObject("Not Found");
             }
         } catch (SQLException | IOException e) {
 
@@ -235,7 +234,7 @@ public class ClientHandler extends Thread {
             int result = UserQuery.removeFriend(currentUser, friend);
 
             if (result > 0) {
-                ArrayList<UserLogin> updatedFriendsList = UserQuery.getFriends(currentUser);
+                ArrayList<Friend> updatedFriendsList = UserQuery.getFriends(currentUser);
 
                 output.writeObject("updatedFriendsList");
                 output.writeObject(updatedFriendsList);

@@ -1,6 +1,7 @@
 package gifty.dao;
 
 import gifty.dto.Contributor;
+import gifty.dto.Friend;
 import gifty.dto.Item;
 import gifty.dto.User;
 import gifty.dto.UserLogin;
@@ -140,23 +141,46 @@ public class UserQuery {
         }
     }
 
-    public static ArrayList<UserLogin> getFriends(UserLogin userLogin) throws SQLException {
+    public static ArrayList<Friend> getFriends(UserLogin userLogin) throws SQLException {
 
-        String query = "SELECT u.User_login, u.user_name " + "FROM users u "
+        String query = "SELECT u.User_login as User_login, f.STATUS as STATUS " + "FROM users u "
                 + "JOIN friends f ON u.User_login = f.Friend_login OR u.User_login = f.User_login "
-                + "WHERE (f.User_login = ? OR f.Friend_login = ?) AND f.Status = 'ACCEPTED'";
+                + "WHERE (f.User_login = ? OR f.Friend_login = ?) And u.User_login <> ? ";
 
         try (PreparedStatement pst = DataBase.getConnection().prepareStatement(query)) {
 
             pst.setString(1, userLogin.getLogin());
             pst.setString(2, userLogin.getLogin());
+            pst.setString(3, userLogin.getLogin());
 
-            ArrayList<UserLogin> friends = new ArrayList<>();
+            ArrayList<Friend> friends = new ArrayList<>();
 
             try (ResultSet rs = pst.executeQuery()) {
                 while (rs.next()) {
-                    friends.add(
-                            new UserLogin(rs.getNString("User_name"), rs.getString("User_login")));
+
+                    try (PreparedStatement pst1 = DataBase.getConnection().prepareStatement(
+                            " select * from users where user_login = ? and Is_Deleted = false ")) {
+
+                        pst1.setString(1, rs.getString("User_login"));
+
+                        Friend friend;
+
+                        try (ResultSet rs1 = pst1.executeQuery()) {
+                            if (rs1.next()) {
+
+                                friend = new Friend(
+                                        new UserLogin(rs1.getString("USER_NAME"),
+                                                rs1.getString("USER_LOGIN")),
+                                        rs1.getString("user_email"), rs1.getString("Gender"),
+                                        rs1.getString("telephone"), rs1.getDate("DOB"),
+                                        rs.getString("STATUS"));
+
+                                friend.setWishList(new ArrayList<>(getWishList(friend)));
+
+                                friends.add(friend);
+                            }
+                        }
+                    }
                 }
             }
             return friends;

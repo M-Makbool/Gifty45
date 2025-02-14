@@ -1,11 +1,14 @@
 package controllers;
 
+import java.io.IOException;
+
 import gifty.Client;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class ClientHome {
@@ -22,6 +25,7 @@ public class ClientHome {
     @FXML
     protected AnchorPane mainPane;
 
+    @FXML
     public void initialize() {
 
         fullnameLabel.setText(Client.currentUser.getName());
@@ -30,10 +34,29 @@ public class ClientHome {
     }
 
     @FXML
-    void friendlistAction(ActionEvent event) {}
+    void friendlistAction(ActionEvent event) {
+        try {
+
+            Node friendlist = FXMLLoader
+                    .load(getClass().getResource("../fxmls/ClientFriendList.fxml"));
+            mainPane.getChildren().setAll(friendlist);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
-    void wishlistAction(ActionEvent event) {}
+    void wishlistAction(ActionEvent event) {
+        try {
+
+            Node wishlist = FXMLLoader.load(getClass().getResource("../fxmls/ClientWishList.fxml"));
+            mainPane.getChildren().setAll(wishlist);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     void logoutAction(ActionEvent event) {

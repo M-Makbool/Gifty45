@@ -3,24 +3,23 @@ package gifty.dto;
 import java.sql.Date;
 import java.util.ArrayList;
 
-public class User extends UserLogin {
+public class Friend extends UserLogin {
 
     private final String email;
     private final String gender;
     private final String telephone;
     private final Date dateOfBirth;
-    private final double balance ;
-    private ArrayList<Friend> friendList;
+    private final String status;
     private ArrayList<Wish> wishList;
 
-    public User(UserLogin userlogin, String email, String gender, String telephone,
-            Date dateOfBirth, double balance) {
+    public Friend(UserLogin userlogin, String email, String gender, String telephone,
+            Date dateOfBirth, String status) {
         super(userlogin);
         this.email = email.trim().replaceAll("\\s+", " ");
         this.gender = gender;
         this.telephone = telephone.trim().replaceAll("\\s+", " ");
         this.dateOfBirth = dateOfBirth;
-        this.balance = balance;
+        this.status = status;
     }
 
     public String getEmail() { return email; }
@@ -31,15 +30,9 @@ public class User extends UserLogin {
 
     public Date getDateOfBirth() { return dateOfBirth; }
     
-    public double getBalance() { return balance; }
-
-    public void setFriendList(ArrayList<Friend> friendList) {
-        this.friendList = new ArrayList<>(friendList);
-    }
+    public String getStatus() { return status; }
 
     public void setWishList(ArrayList<Wish> wishList) { this.wishList = new ArrayList<>(wishList); }
-
-    public ArrayList<Friend> getfriendList() { return friendList; }
 
     public ArrayList<Wish> getWishList() { return wishList; }
 

@@ -93,6 +93,7 @@ public class ClientLogin {
                 Connection login = new Connection();
 
                 login.getOutput().writeObject("Login");
+                login.getOutput().writeObject(Client.currentUser);
                 login.getOutput().writeObject(Client.currentLogin);
 
                 String responce = (String)login.getInput().readObject();

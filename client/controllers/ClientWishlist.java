@@ -3,7 +3,6 @@ package controllers;
 import java.io.IOException;
 
 import gifty.Client;
-import gifty.dto.Contributor;
 import gifty.dto.Item;
 import gifty.dto.Wish;
 import javafx.application.Platform;
@@ -48,16 +47,7 @@ public class ClientWishlist {
 
                     wishes.getChildren().add(loader.load());
 
-                    controller.setItemLabel(wish.getItem().getItem_name());
-                    controller.setCategoryLabel(wish.getItem().getCategory());
-
-                    Double price = wish.getItem().getPrice();
-                    controller.setPriceLabel(Double.toString(price));
-
-                    Double total_mony = 0.0;
-                    for (Contributor contributor : wish.getConributUsers())
-                        total_mony += contributor.getAmount();
-                    controller.setMoneyLeftLabel(Double.toString(price - total_mony));
+                    controller.setWish(wish);
                 }
 
                 wishesPane.setContent(wishes);

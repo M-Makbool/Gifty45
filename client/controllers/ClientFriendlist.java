@@ -43,6 +43,7 @@ public class ClientFriendlist {
                 Connection addfriend = new Connection();
 
                 addfriend.getOutput().writeObject("Add Friend");
+                addfriend.getOutput().writeObject(Client.currentUser);
                 addfriend.getOutput().writeObject(friend);
 
                 String responce = (String)addfriend.getInput().readObject();

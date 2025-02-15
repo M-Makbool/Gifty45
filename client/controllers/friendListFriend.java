@@ -53,6 +53,7 @@ public class friendListFriend {
                 Connection removeFriend = new Connection();
 
                 removeFriend.getOutput().writeObject("Remove Friend");
+                removeFriend.getOutput().writeObject(Client.currentUser);
                 removeFriend.getOutput().writeObject(friend);
 
                 String responce = (String)removeFriend.getInput().readObject();

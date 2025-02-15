@@ -48,6 +48,7 @@ public class friendListReuest {
                 Connection acceptFriend = new Connection();
 
                 acceptFriend.getOutput().writeObject("Accept Friend");
+                acceptFriend.getOutput().writeObject(Client.currentUser);
                 acceptFriend.getOutput().writeObject(friend);
 
                 String responce = (String)acceptFriend.getInput().readObject();
@@ -86,6 +87,7 @@ public class friendListReuest {
                 Connection removeFriend = new Connection();
 
                 removeFriend.getOutput().writeObject("Remove Friend");
+                removeFriend.getOutput().writeObject(Client.currentUser);
                 removeFriend.getOutput().writeObject(friend);
 
                 String responce = (String)removeFriend.getInput().readObject();

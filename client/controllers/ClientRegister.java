@@ -108,6 +108,7 @@ public class ClientRegister {
 
                 register.getOutput().writeObject("Register");
                 register.getOutput().writeObject(Client.currentUser);
+                register.getOutput().writeObject(Client.currentUser);
 
                 String responce = (String)register.getInput().readObject();
 

@@ -37,6 +37,7 @@ public class wishListProuducts {
                 Connection addwish = new Connection();
 
                 addwish.getOutput().writeObject("Add Wish");
+                addwish.getOutput().writeObject(Client.currentUser);
                 addwish.getOutput().writeObject(thisItem);
 
                 String responce = (String)addwish.getInput().readObject();

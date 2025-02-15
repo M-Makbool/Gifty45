@@ -14,7 +14,7 @@ public class ClientHandler extends Thread {
     private final Socket socket;
     private final ObjectOutputStream output;
     private final ObjectInputStream input;
-    private static User currentUser;
+    private User currentUser;
 
     public ClientHandler(Socket soc) throws IOException {
         this.socket = soc;
@@ -28,6 +28,7 @@ public class ClientHandler extends Thread {
         try {
             String request = (String)input.readObject(); // Read request
             System.out.println("New client connected: " + request); // fortesting
+            currentUser = (User)input.readObject(); // Read request
 
             switch (request) {
 

@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS Users;
 -- Users Table
 CREATE TABLE Users (
     User_login VARCHAR2(50) PRIMARY KEY,
-    user_email VARCHAR2(100) UNIQUE,
+    user_email VARCHAR2(100),
     user_name VARCHAR2(100),
     id NUMBER UNIQUE,
     telephone VARCHAR2(20),

@@ -24,6 +24,9 @@ public class ClientFriendlist {
     private Label addfriendLabel;
 
     @FXML
+    private Label friendlistLabel;
+
+    @FXML
     private ScrollPane friendlistPane;
 
     @FXML
@@ -54,6 +57,18 @@ public class ClientFriendlist {
                     friend = (UserLogin)addfriend.getInput().readObject();
                     addfriendLabel.setStyle("-fx-text-fill: green;");
                     addfriendLabel.setText("Friend Request Sended to " + friend.getName());
+                    break;
+
+                case "REQUESTED":
+                    friend = (UserLogin)addfriend.getInput().readObject();
+                    addfriendLabel.setStyle("-fx-text-fill: red;");
+                    addfriendLabel.setText("Request already sent to " + friend.getName() + "!");
+                    break;
+
+                case "ACCEPTED":
+                    friend = (UserLogin)addfriend.getInput().readObject();
+                    addfriendLabel.setStyle("-fx-text-fill: red;");
+                    addfriendLabel.setText("" + friend.getName() + " already is a friend!");
                     break;
 
                 case "Not Found":
@@ -95,7 +110,9 @@ public class ClientFriendlist {
                         controller.setDobLabel1(friend.getDateOfBirth().toString());
                     }
                 }
-
+                
+                friendlistLabel.setStyle("-fx-font-weight: bold;");
+                friendlistLabel.setText("--- Your Friend List ---");
                 friendlistPane.setContent(frindes);
 
             } catch (IOException e) {
@@ -130,6 +147,8 @@ public class ClientFriendlist {
                     }
                 }
 
+                friendlistLabel.setStyle("-fx-font-weight: bold;");
+                friendlistLabel.setText("--- Your Friend Request ---");
                 friendlistPane.setContent(frindes);
 
             } catch (IOException e) {

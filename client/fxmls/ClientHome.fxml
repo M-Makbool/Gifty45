@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -10,48 +13,51 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ClientHome">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ClientHome">
    <children>
-      <AnchorPane fx:id="mainPane" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
+      <AnchorPane fx:id="mainPane" layoutX="266.0" prefHeight="540.0" prefWidth="764.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="130.0" AnchorPane.leftAnchor="266.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
          <children>
-            <Label text="Welcome to your home page!" textFill="#333333">
-               <font>
-                  <Font name="System Bold" size="24.0" />
-               </font>
-            </Label>
+            <ImageView fitHeight="540.0" fitWidth="810.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" translateX="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@gifty45logo.png" />
+               </image>
+               <viewport>
+                  <Rectangle2D />
+               </viewport>
+            </ImageView>
          </children>
       </AnchorPane>
-      <Pane layoutX="51.0" layoutY="58.0" prefHeight="720.0" prefWidth="225.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane layoutX="51.0" layoutY="58.0" prefHeight="720.0" prefWidth="225.0" style="-fx-background-color: #A4B4BA;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Circle fill="DODGERBLUE" layoutX="113.0" layoutY="243.0" radius="72.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: #D3D3D3;" />
-            <Label contentDisplay="CENTER" layoutX="33.0" layoutY="50.0" text="Gifty45" textAlignment="CENTER">
+            <Circle fill="DODGERBLUE" layoutX="113.0" layoutY="243.0" radius="72.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" style="-fx-fill: #555B70;" />
+            <Label contentDisplay="CENTER" layoutX="33.0" layoutY="50.0" text="Gifty45" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="45.0" />
                </font>
             </Label>
-            <Label fx:id="fullnameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="25.0" layoutY="325.0" prefHeight="25.0" prefWidth="175.0" text="Full Name" textAlignment="CENTER">
+            <Label fx:id="fullnameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="15.0" layoutY="325.0" prefHeight="25.0" prefWidth="195.0" text="Full Name" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="58.0" layoutY="635.0" mnemonicParsing="false" onAction="#logoutAction" prefHeight="30.0" prefWidth="110.0" style="-fx-background-color: gray;" text="Logout" textAlignment="CENTER" textFill="WHITE">
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="58.0" layoutY="635.0" mnemonicParsing="false" onAction="#logoutAction" prefHeight="30.0" prefWidth="110.0" style="-fx-background-color: #556970;" text="Logout" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Label fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="26.0" layoutY="352.0" prefHeight="25.0" prefWidth="175.0" text="userName" textAlignment="CENTER">
+            <Label fx:id="usernameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="26.0" layoutY="352.0" prefHeight="25.0" prefWidth="175.0" text="userName" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <VBox layoutX="38.0" layoutY="510.0" prefWidth="150.0" spacing="10.0" style="-fx-background-color: lightgray;">
+            <VBox layoutX="38.0" layoutY="510.0" prefWidth="150.0" spacing="10.0" style="-fx-background-color: #555B70;">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="175.0" text="Balance" textAlignment="CENTER">
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="175.0" text="Balance" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="balanceLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="175.0" text="100 L.E." textAlignment="CENTER">
+                  <Label fx:id="balanceLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="25.0" prefWidth="175.0" text="100 L.E." textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -65,8 +71,8 @@
       </Pane>
       <HBox layoutX="380.0" layoutY="635.0" spacing="50.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="375.0" AnchorPane.rightAnchor="205.0">
          <children>
-            <Button minHeight="30.0" mnemonicParsing="false" onAction="#friendlistAction" prefHeight="35.0" prefWidth="225.0" style="-fx-background-color: #000000; -fx-text-fill: white;" text="Friend List" />
-            <Button minHeight="30.0" mnemonicParsing="false" onAction="#wishlistAction" prefHeight="35.0" prefWidth="225.0" style="-fx-background-color: #000000; -fx-text-fill: white;" text="WishList" />
+            <Button minHeight="30.0" mnemonicParsing="false" onAction="#friendlistAction" prefHeight="35.0" prefWidth="225.0" style="-fx-background-color: #555B70; -fx-text-fill: white;" text="Friend List" />
+            <Button minHeight="30.0" mnemonicParsing="false" onAction="#wishlistAction" prefHeight="35.0" prefWidth="225.0" style="-fx-background-color: #555B70; -fx-text-fill: white;" text="WishList" />
          </children>
       </HBox>
    </children>

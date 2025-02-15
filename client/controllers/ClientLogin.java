@@ -2,11 +2,14 @@ package controllers;
 
 import gifty.Client;
 import gifty.Connection;
+import gifty.dto.Item;
 import gifty.dto.User;
 import gifty.dto.UserLogin;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -59,6 +62,7 @@ public class ClientLogin {
         }
     }
 
+    @SuppressWarnings("unchecked")
     @FXML
     void loginAction(ActionEvent event) {
 
@@ -97,6 +101,7 @@ public class ClientLogin {
 
                 case "User":
                     Client.currentUser = (User)login.getInput().readObject();
+                    Client.market = (ArrayList<Item>)login.getInput().readObject();
                     new Client().switchScene("Home", (Stage)passUser.getScene().getWindow());
                     break;
 

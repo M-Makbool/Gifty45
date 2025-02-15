@@ -1,5 +1,6 @@
 package gifty;
 
+import gifty.dao.ItemQuery;
 import gifty.dao.UserQuery;
 import gifty.dto.*;
 import java.io.IOException;
@@ -98,6 +99,7 @@ public class ClientHandler extends Thread {
             if (currentUser != null) {
                 output.writeObject("User");
                 output.writeObject(currentUser);
+                output.writeObject(ItemQuery.getItems());
             } else {
                 output.writeObject("Not Found");
             }
@@ -133,9 +135,9 @@ public class ClientHandler extends Thread {
             int result = UserQuery.addWish(currentUser, wish);
 
             if (result > 0) {
-                output.writeObject("wish List");
-                ArrayList<Wish> updatedWishList = UserQuery.getWishList(currentUser);
-                output.writeObject(updatedWishList);
+                output.writeObject("User");
+                currentUser = UserQuery.getUser(currentUser);
+                output.writeObject(currentUser);
             } else {
                 output.writeObject(" Wish could not be added to the database");
             }

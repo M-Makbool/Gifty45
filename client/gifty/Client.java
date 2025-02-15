@@ -1,9 +1,12 @@
 package gifty;
 
+import gifty.dto.Item;
 import gifty.dto.User;
 import gifty.dto.UserLogin;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,6 +16,7 @@ public class Client {
 
     public static User currentUser;
     public static UserLogin currentLogin;
+    public static ArrayList<Item> market;
 
     public void switchScene(String scene, Stage primaryStage) {
         try {

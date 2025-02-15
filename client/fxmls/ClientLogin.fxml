@@ -58,5 +58,6 @@
       </Label>
       <Label fx:id="usernameLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="687.0" layoutY="356.0" textAlignment="RIGHT" textFill="RED" AnchorPane.rightAnchor="360.0" />
       <Label fx:id="passwordLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="687.0" layoutY="412.0" textAlignment="RIGHT" textFill="RED" AnchorPane.rightAnchor="360.0" />
+      <Label fx:id="registerLabel" layoutX="360.0" layoutY="570.0" textFill="RED" AnchorPane.leftAnchor="360.0" />
    </children>
 </AnchorPane>

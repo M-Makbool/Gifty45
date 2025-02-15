@@ -36,6 +36,10 @@ public class ClientHandler extends Thread {
                 login((UserLogin)input.readObject());
                 break;
 
+            case "User Check":
+                check((UserLogin)input.readObject());
+                break;
+
             case "Register": {
                 User user = (User)input.readObject();
                 register(user);
@@ -111,9 +115,33 @@ public class ClientHandler extends Thread {
     }
 
     @SuppressWarnings("CallToPrintStackTrace")
+    public void check(UserLogin user) {
+
+        try {
+
+            boolean userExist = false;
+            if (UserQuery.getUser(user) instanceof User)
+                userExist = true;
+
+            if (userExist) {
+                output.writeObject("User");
+            } else {
+                output.writeObject("Not Found");
+            }
+
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @SuppressWarnings("CallToPrintStackTrace")
     public void register(User user) {
         try {
-            int result = UserQuery.addUser(user);
+
+            int result = 0;
+
+            if (!(UserQuery.getUser(user) instanceof User))
+                result = UserQuery.addUser(user);
 
             if (result > 0) {
                 output.writeObject("User");

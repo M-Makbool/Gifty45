@@ -27,6 +27,9 @@ public class ClientLogin {
     private Label loginLabel;
 
     @FXML
+    private Label registerLabel;
+
+    @FXML
     private Label passwordLabel;
 
     @FXML
@@ -68,6 +71,8 @@ public class ClientLogin {
 
         usernameLabel.setText("");
         passwordLabel.setText("");
+        loginLabel.setText("");
+        registerLabel.setText("");
 
         boolean missing = false;
 
@@ -123,20 +128,58 @@ public class ClientLogin {
     @FXML
     void registerAction(ActionEvent event) {
 
+        usernameLabel.setText("");
+        passwordLabel.setText("");
+        loginLabel.setText("");
+        registerLabel.setText("");
+
+        boolean missing = false;
+
         if (txtUser.getText().equals("")) {
             usernameLabel.setText("Enter username to register!");
-            return;
+            missing = true;
         }
 
         if (passUser.getText().equals("")) {
             passwordLabel.setText("Enter password to register!");
-            return;
+            missing = true;
         }
+
+        if (missing)
+            return;
 
         Client.currentLogin = new UserLogin("", txtUser.getText());
         Client.currentLogin.setPassword(hash(passUser.getText()));
 
-        new Client().switchScene("Register", (Stage)passUser.getScene().getWindow());
+        Platform.runLater(() -> {
+            try {
+
+                Connection login = new Connection();
+
+                login.getOutput().writeObject("User Check");
+                login.getOutput().writeObject(Client.currentUser);
+                login.getOutput().writeObject(Client.currentLogin);
+
+                String responce = (String)login.getInput().readObject();
+
+                switch (responce) {
+
+                case "User":
+                    registerLabel.setText("User already exist!");
+                    break;
+
+                case "Not Found":
+                    new Client().switchScene("Register", (Stage)passUser.getScene().getWindow());
+                    break;
+                }
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+        });
 
     }
 

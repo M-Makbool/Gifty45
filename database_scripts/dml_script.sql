@@ -1,0 +1,82 @@
+INSERT INTO ITEMS (NAME, PRICE, CATEGORY, STATUS) VALUES
+-- Accessories
+('Leather Wallet', 25.99, 'Accessories', 'Available'),
+('Designer Sunglasses', 49.99, 'Accessories', 'Available'),
+('Elegant Silk Scarf', 39.99, 'Accessories', 'Available'),
+('Luxury Handbag', 120.00, 'Accessories', 'Available'),
+('Classic Wristwatch', 85.00, 'Accessories', 'Available'),
+('Engraved Keychain', 15.99, 'Accessories', 'Available'),
+('Custom Phone Case', 19.99, 'Accessories', 'Available'),
+('Stylish Fedora Hat', 35.00, 'Accessories', 'Available'),
+('Leather Belt', 32.99, 'Accessories', 'Available'),
+('Minimalist Cardholder', 22.99, 'Accessories', 'Available'),
+
+-- Jewelry
+('Gold-Plated Necklace', 79.99, 'Jewelry', 'Available'),
+('Diamond Stud Earrings', 199.99, 'Jewelry', 'Available'),
+('Pearl Bracelet', 59.99, 'Jewelry', 'Available'),
+('Personalized Name Pendant', 89.99, 'Jewelry', 'Available'),
+('Sterling Silver Ring', 45.99, 'Jewelry', 'Available'),
+('Luxury Watch (Men)', 250.00, 'Jewelry', 'Available'),
+('Birthstone Charm Bracelet', 99.99, 'Jewelry', 'Available'),
+('Rose Gold Bangle', 65.99, 'Jewelry', 'Available'),
+('Cubic Zirconia Earrings', 35.99, 'Jewelry', 'Available'),
+('Handmade Beaded Bracelet', 27.99, 'Jewelry', 'Available'),
+
+-- Electronics
+('Wireless Earbuds', 79.99, 'Electronics', 'Available'),
+('Smartwatch', 129.99, 'Electronics', 'Available'),
+('Bluetooth Speaker', 69.99, 'Electronics', 'Available'),
+('Mini Projector', 149.99, 'Electronics', 'Available'),
+('LED Light Strip', 24.99, 'Electronics', 'Available'),
+('Wireless Charging Pad', 29.99, 'Electronics', 'Available'),
+('Gaming Mouse', 59.99, 'Electronics', 'Available'),
+('Noise-Canceling Headphones', 199.99, 'Electronics', 'Available'),
+('Digital Photo Frame', 79.99, 'Electronics', 'Available'),
+('Portable Power Bank', 39.99, 'Electronics', 'Available'),
+
+-- Books
+('Bestselling Novel', 19.99, 'Books', 'Available'),
+('Inspirational Self-Help Book', 22.99, 'Books', 'Available'),
+('Fantasy Book Collection', 49.99, 'Books', 'Available'),
+('Classic Literature Set', 59.99, 'Books', 'Available'),
+('Personalized Journal', 14.99, 'Books', 'Available'),
+('Sketchbook for Artists', 18.99, 'Books', 'Available'),
+('DIY Craft Book', 27.99, 'Books', 'Available'),
+('Poetry Anthology', 25.99, 'Books', 'Available'),
+('Science Fiction Bestseller', 34.99, 'Books', 'Available'),
+('Cookbook for Beginners', 29.99, 'Books', 'Available'),
+
+-- Perfumes & Fragrances
+('Luxury Perfume (Men)', 89.99, 'Perfumes & Fragrances', 'Available'),
+('Luxury Perfume (Women)', 99.99, 'Perfumes & Fragrances', 'Available'),
+('Unisex Designer Fragrance', 79.99, 'Perfumes & Fragrances', 'Available'),
+('Essential Oil Gift Set', 45.99, 'Perfumes & Fragrances', 'Available'),
+('Floral-Scented Perfume', 69.99, 'Perfumes & Fragrances', 'Available'),
+('Citrus & Fresh Perfume', 74.99, 'Perfumes & Fragrances', 'Available'),
+('Oud & Musk Collection', 149.99, 'Perfumes & Fragrances', 'Available'),
+('Car Air Freshener Set', 19.99, 'Perfumes & Fragrances', 'Available'),
+('Aromatherapy Roll-On Perfume', 34.99, 'Perfumes & Fragrances', 'Available'),
+('Solid Perfume Compact', 39.99, 'Perfumes & Fragrances', 'Available'),
+('Sandalwood & Vanilla Mist', 44.99, 'Perfumes & Fragrances', 'Available'),
+('Rose Essence Perfume', 54.99, 'Perfumes & Fragrances', 'Available'),
+('Luxury Cologne Set', 129.99, 'Perfumes & Fragrances', 'Available'),
+
+-- Candles
+('Scented Soy Candle (Lavender)', 24.99, 'Candles', 'Available'),
+('Aromatherapy Candle Set', 49.99, 'Candles', 'Available'),
+('Luxury Vanilla Candle', 29.99, 'Candles', 'Available'),
+('Personalized Candle with Name', 39.99, 'Candles', 'Available'),
+('Handmade Beeswax Candle', 19.99, 'Candles', 'Available'),
+('Woodwick Crackling Candle', 34.99, 'Candles', 'Available'),
+('Rose & Jasmine Scented Candle', 27.99, 'Candles', 'Available'),
+('Cinnamon & Apple Holiday Candle', 24.99, 'Candles', 'Available'),
+('Relaxing Spa Candle', 32.99, 'Candles', 'Available'),
+('Travel-Sized Candle Set', 22.99, 'Candles', 'Available'),
+('Ocean Breeze Candle', 26.99, 'Candles', 'Available'),
+('Coconut & Lime Scented Candle', 31.99, 'Candles', 'Available'),
+('Chocolate & Coffee Candle', 28.99, 'Candles', 'Available'),
+('Festive Christmas Candle', 29.99, 'Candles', 'Available'),
+('Meditation Scented Candle', 37.99, 'Candles', 'Available');
+
+COMMIT;

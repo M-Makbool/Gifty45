@@ -12,6 +12,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -90,6 +91,13 @@ public class friendListFriend {
                 for (Friend friend : Client.currentUser.getfriendList()) {
 
                     if (friend.getLogin().equals(userLoginLabel.getText())) {
+
+                        Label frindWishesLabel = new Label();
+                        frindWishesLabel.setText("--- " + friend.getName() + " Wishes ---");
+                        frindWishesLabel.setStyle(
+                                "-fx-font-size: 21px; -fx-font-weight: bold; -fx-alignment: center;");
+                        wishes.getChildren().add(frindWishesLabel);
+                        wishes.setAlignment(Pos.CENTER);
 
                         for (Wish wish : friend.getWishList()) {
 

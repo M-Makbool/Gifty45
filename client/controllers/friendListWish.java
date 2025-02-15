@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 
 public class friendListWish {
@@ -30,6 +31,12 @@ public class friendListWish {
     private Label moneyLeftLabel;
 
     @FXML
+    private Label contributeLabel;
+
+    @FXML
+    private ProgressBar progressBar;
+
+    @FXML
     private Button btnContribute;
 
     @FXML
@@ -41,6 +48,8 @@ public class friendListWish {
 
     private Wish thisWish;
 
+    private Double total_mony = 0.0;
+
     @FXML
     void contributeAction(ActionEvent event) {
 
@@ -49,40 +58,59 @@ public class friendListWish {
         if (amountText.matches("\\d+(\\.\\d{1,2})?")) {
 
             Double amount = Double.parseDouble(amountText);
-            Platform.runLater(() -> {
 
-                try {
+            if (amount <= Double.parseDouble(moneyLeftLabel.getText()))
 
-                    Connection contribute = new Connection();
+                Platform.runLater(() -> {
 
-                    contribute.getOutput().writeObject("Contribute");
-                    contribute.getOutput().writeObject(Client.currentUser);
-                    contribute.getOutput().writeObject(thisFriend);
-                    contribute.getOutput().writeObject(thisWish);
-                    contribute.getOutput().writeObject(amount);
+                    total_mony += amount;
+                    try {
 
-                    String responce = (String)contribute.getInput().readObject();
+                        Connection contribute = new Connection();
 
-                    switch (responce) {
+                        contribute.getOutput().writeObject("Contribute");
+                        contribute.getOutput().writeObject(Client.currentUser);
+                        contribute.getOutput().writeObject(thisFriend);
+                        contribute.getOutput().writeObject(thisWish);
+                        contribute.getOutput().writeObject(amount);
 
-                    case "User":
-                        Client.currentUser = (User)contribute.getInput().readObject();
-                        break;
+                        String responce = (String)contribute.getInput().readObject();
 
-                    case "Not Found":
-                        break;
+                        switch (responce) {
+
+                        case "User":
+                            Client.currentUser = (User)contribute.getInput().readObject();
+                            break;
+
+                        case "Not Found":
+                            break;
+                        }
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
                     }
 
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
+                    progressBar.setProgress((total_mony) / thisWish.getItem().getPrice());
+                    moneyLeftLabel
+                            .setText(String.valueOf(thisWish.getItem().getPrice() - total_mony));
 
-            });
-        } else {
-            contributeAmountTxt.setText("not valid");
-        }
+                    if (total_mony >= thisWish.getItem().getPrice()) {
+                        btnContribute.setDisable(true);
+                        contributeAmountTxt.setDisable(true);
+                        contributeLabel.setStyle("-fx-text-fill: green;");
+                        contributeLabel.setText("The Wish is Granted :)");
+                        btnContribute.setStyle("-fx-text-fill: green;");
+                        progressBar.setStyle("-fx-accent: green;");
+                    }
+
+                });
+            else
+                contributeLabel.setText("Too much money!");
+
+        } else
+            contributeLabel.setText("Not valid Num!");
 
     }
 
@@ -91,16 +119,26 @@ public class friendListWish {
         this.thisWish = wish;
         itemLabel.setText(wish.getItem().getItem_name());
         categoryLabel.setText(wish.getItem().getCategory());
-        // dateLabel.setText(wish.getDate().toString());
 
         Double price = wish.getItem().getPrice();
         priceLabel.setText(Double.toString(price));
 
-        Double total_mony = 0.0;
         for (Contributor contributor : wish.getConributUsers())
             total_mony += contributor.getAmount();
 
         moneyLeftLabel.setText(Double.toString(price - total_mony));
+
+        progressBar.setProgress(total_mony / price);
+
+        if (total_mony >= price) {
+            btnContribute.setDisable(true);
+            contributeAmountTxt.setDisable(true);
+            contributeLabel.setStyle("-fx-text-fill: green;");
+            contributeLabel.setText("The Wish is Granted :)");
+            btnContribute.setStyle("-fx-text-fill: green;");
+            progressBar.setStyle("-fx-accent: green;");
+        }
+
     }
 
 }

@@ -52,10 +52,10 @@ public class ClientHandler extends Thread {
                 break;
             }
             case "Contribute": {
-                UserLogin friend = (UserLogin)input.readObject();
+                Friend friend = (Friend)input.readObject();
                 Wish wish = (Wish)input.readObject();
-                Wish contributedWish = contribute(friend, wish);
-                output.writeObject(contributedWish);
+                Double amount = (Double)input.readObject();
+                contribute(friend, wish, amount);
                 break;
             }
             case "Get Friend": {
@@ -169,9 +169,22 @@ public class ClientHandler extends Thread {
 
     }
 
-    public Wish contribute(UserLogin friend, Wish wish) {
-        // Implement contribute logic here
-        return null;
+    @SuppressWarnings("CallToPrintStackTrace")
+    public void contribute(UserLogin friend, Wish wish, Double amount) {
+        try {
+            int result = UserQuery.contribute(friend, currentUser, wish, amount);
+
+            if (result > 0) {
+                output.writeObject("User");
+                output.writeObject(UserQuery.getUser(currentUser));
+            } else {
+                output.writeObject("Get Friend Failed: Friend could not be found in the database.");
+            }
+        } catch (SQLException | IOException e) {
+
+            e.printStackTrace();
+
+        }
     }
 
     @SuppressWarnings("CallToPrintStackTrace")

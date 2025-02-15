@@ -27,27 +27,44 @@ public class ServerBalance {
 
     @FXML
     void addBalanceAction(ActionEvent event) {
+
+        boolean userFound = false;
+
         try {
+
             if (!balanceField.getText().matches("\\d+(\\.\\d{1,2})?")) {
                 labelNotify.setStyle("-fx-text-fill: red;");
                 labelNotify.setText("Invalid Balance format. Please enter a valid number.");
                 return;
             }
-            User user = (User) UserQuery.addBalance(new UserLogin("balance", userLoginField.getText()),
+
+            for (UserLogin user : UserQuery.getUsers())
+                if (user.getLogin().equals(userLoginField.getText())) {
+                    userFound = true;
+                    break;
+                }
+
+            if (!userFound) {
+                labelNotify.setStyle("-fx-text-fill: red;");
+                labelNotify.setText("Invalid username. Please enter an existing user.");
+                return;
+            }
+
+            User user = (User)UserQuery.addBalance(
+                    new UserLogin("balance", userLoginField.getText()),
                     Double.parseDouble(balanceField.getText()));
             user = UserQuery.getUser(user);
 
-            if (user.getBalance() > 0) {
+            if (user.getBalance() >= 0) {
                 labelNotify.setStyle("-fx-text-fill: green;");
-                labelNotify.setText("Balance Added Successfully. Total Balance is: " + user.getBalance()
-                        + " L.E. for user: " + user.getName());
+                labelNotify.setText("Balance Added Successfully. Total Balance is: "
+                        + user.getBalance() + " L.E. for user: " + user.getName());
             } else {
                 labelNotify.setStyle("-fx-text-fill: red;");
                 labelNotify.setText("Balance Faield");
             }
+
         } catch (SQLException e) {
-            labelNotify.setStyle("-fx-text-fill: red;");
-            labelNotify.setText("Balance Failed");
             e.printStackTrace();
         }
     }

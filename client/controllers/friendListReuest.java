@@ -59,6 +59,15 @@ public class friendListReuest {
                     Client.currentUser = (User)acceptFriend.getInput().readObject();
                     btnAccept.setDisable(true);
                     btnRemove.setDisable(true);
+                    ClientFriendlist.rquests--;
+                    Button btnRequest = (Button)btnAccept.getScene().lookup("#btnRequest");
+                    if (ClientFriendlist.rquests > 0) {
+                        btnRequest.setText("Friend Requestes: " + ClientFriendlist.rquests);
+                        btnRequest.setStyle("-fx-text-fill: white; -fx-background-color: #55705c;");
+                    } else {
+                        btnRequest.setText("Friend Requestes");
+                        btnRequest.setStyle(null);
+                    }
                     break;
 
                 case "Not Found":

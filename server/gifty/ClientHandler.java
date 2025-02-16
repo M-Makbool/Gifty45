@@ -233,33 +233,38 @@ public class ClientHandler extends Thread {
         }
     }
 
-    // user: makbool friend: adawy stat: request
     @SuppressWarnings("CallToPrintStackTrace")
     public void addFriend(UserLogin friend) {
         try {
 
             User friendUser = UserQuery.getUser(friend);
 
-            for (Friend friend2 : friendUser.getfriendList())
-                if (friend2.getLogin().equals(currentUser.getLogin()))
-                    if (friend2.getStatus().equals("REQUESTED")) {
-                        output.writeObject("REQUESTED");
-                        output.writeObject(UserQuery.getUser(friend));
-                        return;
-                    } else if (friend2.getStatus().equals("ACCEPTED")) {
-                        output.writeObject("ACCEPTED");
-                        output.writeObject(UserQuery.getUser(friend));
-                        return;
-                    }
+            if (friendUser instanceof User) {
+                for (Friend friend2 : friendUser.getfriendList()) {
+                    if (friend2.getLogin().equals(currentUser.getLogin()))
+                        if (friend2.getStatus().equals("REQUESTED")) {
+                            output.writeObject("REQUESTED");
+                            output.writeObject(UserQuery.getUser(friend));
+                            return;
+                        } else if (friend2.getStatus().equals("ACCEPTED")) {
+                            output.writeObject("ACCEPTED");
+                            output.writeObject(UserQuery.getUser(friend));
+                            return;
+                        }
+                }
 
-            int result = UserQuery.addFriend(currentUser, friend);
+                int result = UserQuery.addFriend(currentUser, friend);
 
-            if (result > 0) {
-                output.writeObject("User");
-                output.writeObject(UserQuery.getUser(friend));
-            } else {
+                if (result > 0) {
+                    output.writeObject("User");
+                    output.writeObject(UserQuery.getUser(friend));
+                } else {
+                    output.writeObject("Not Found");
+                }
+
+            } else
                 output.writeObject("Not Found");
-            }
+
         } catch (SQLException | IOException e) {
 
             e.printStackTrace();

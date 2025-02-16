@@ -10,6 +10,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -33,7 +34,22 @@ public class ClientFriendlist {
     private ScrollPane wishlistPane;
 
     @FXML
-    void initialize() { friendlistAction(new ActionEvent()); }
+    public Button btnRequest;
+
+    public static int rquests;
+
+    @FXML
+    void initialize() {
+        friendlistAction(new ActionEvent());
+        rquests = 0;
+        for (Friend friend : Client.currentUser.getfriendList())
+            if (friend.getStatus().equals("REQUESTED"))
+                rquests++;
+        if (rquests > 0) {
+            btnRequest.setText("Friend Requestes: " + rquests);
+            btnRequest.setStyle("-fx-text-fill: white; -fx-background-color: #55705c;");
+        }
+    }
 
     @FXML
     void addfriendAction(ActionEvent event) {
@@ -110,7 +126,7 @@ public class ClientFriendlist {
                         controller.setDobLabel1(friend.getDateOfBirth().toString());
                     }
                 }
-                
+
                 friendlistLabel.setStyle("-fx-font-weight: bold;");
                 friendlistLabel.setText("--- Your Friend List ---");
                 friendlistPane.setContent(frindes);

@@ -8,25 +8,25 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ClientLogin">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1080.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ClientLogin">
    <children>
-      <Label layoutX="350.0" layoutY="221.0" text="WLECOME BACK" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="350.0">
+      <Label layoutX="350.0" layoutY="221.0" text="WELCOME BACK" textFill="#555B70" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="350.0">
          <font>
             <Font name="System Bold" size="47.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="360.0" layoutY="280.0" prefHeight="20.0" prefWidth="360.0" text="Enter your username and password " textAlignment="CENTER" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="360.0" layoutY="280.0" prefHeight="20.0" prefWidth="360.0" text="Enter your username and password " textAlignment="CENTER" textFill="#555B70" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
       <TextField fx:id="txtUser" alignment="CENTER" layoutX="360.0" layoutY="377.0" prefHeight="25.0" prefWidth="360.0" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0" />
-      <Label layoutX="360.0" layoutY="356.0" text="Username" AnchorPane.leftAnchor="360.0">
+      <Label layoutX="360.0" layoutY="356.0" text="Username" textFill="#555B70" AnchorPane.leftAnchor="360.0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="360.0" layoutY="412.0" text="Password" AnchorPane.leftAnchor="360.0">
+      <Label layoutX="360.0" layoutY="412.0" text="Password" textFill="#555B70" AnchorPane.leftAnchor="360.0">
          <font>
             <Font size="14.0" />
          </font>
@@ -37,7 +37,7 @@
             <Font size="10.0" />
          </font>
       </Label>
-      <Button fx:id="btnLogin" alignment="CENTER" contentDisplay="CENTER" layoutX="360.0" layoutY="520.0" mnemonicParsing="false" onAction="#loginAction" prefHeight="25.0" prefWidth="360.0" style="-fx-background-color: black;" text="Login" textFill="WHITE" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0">
+      <Button fx:id="btnLogin" alignment="CENTER" contentDisplay="CENTER" layoutX="360.0" layoutY="520.0" mnemonicParsing="false" onAction="#loginAction" prefHeight="25.0" prefWidth="360.0" style="-fx-background-color: #556970;" text="Login" textFill="WHITE" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0">
          <font>
             <Font size="14.0" />
          </font>
@@ -45,13 +45,13 @@
       <Label layoutX="531.0" layoutY="561.0" text="OR" textFill="#bcbcbc" AnchorPane.leftAnchor="531.0" AnchorPane.rightAnchor="530.0" />
       <Line endX="150.0" layoutX="360.5" layoutY="570.0" stroke="#b5b5b5" AnchorPane.leftAnchor="360.0" />
       <Line endX="150.0" layoutX="569.5" layoutY="570.0" stroke="#b5b5b5" AnchorPane.rightAnchor="360.0" />
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="360.0" layoutY="590.0" mnemonicParsing="false" onAction="#registerAction" prefHeight="25.0" prefWidth="360.0" style="-fx-background-color: gray;" text="Create New Account" textFill="WHITE" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0">
+      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="360.0" layoutY="590.0" mnemonicParsing="false" onAction="#registerAction" prefHeight="25.0" prefWidth="360.0" style="-fx-background-color: #A4B4BA;" text="Create New Account" textFill="WHITE" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
       <Label fx:id="loginLabel" layoutX="360.0" layoutY="500.0" textFill="RED" AnchorPane.leftAnchor="360.0" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="360.0" layoutY="48.0" text="Gifty45" textAlignment="CENTER" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0">
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="360.0" layoutY="48.0" text="Gifty45" textAlignment="CENTER" textFill="#555B70" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="360.0">
          <font>
             <Font name="System Bold" size="96.0" />
          </font>

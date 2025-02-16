@@ -22,7 +22,7 @@
                         <HBox alignment="CENTER" prefHeight="46.0" prefWidth="804.0" spacing="30.0">
                            <children>
                             <Button alignment="CENTER" contentDisplay="CENTER" minWidth="100.0" mnemonicParsing="false" onAction="#friendlistAction" prefWidth="150.0" text="Friend List" />
-                              <Button alignment="CENTER" contentDisplay="CENTER" minWidth="100.0" mnemonicParsing="false" onAction="#friendrequestAction" prefWidth="150.0" text="Friend Requests" />
+                              <Button fx:id="btnRequest" alignment="CENTER" contentDisplay="CENTER" minWidth="100.0" mnemonicParsing="false" onAction="#friendrequestAction" prefWidth="150.0" text="Friend Requests" />
                            </children>
                            <padding>
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

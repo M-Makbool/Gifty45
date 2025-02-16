@@ -17,7 +17,7 @@
           <AnchorPane minWidth="100.0">
                <children>
                   <TextField fx:id="searchField" layoutX="10.0" layoutY="10.0" onKeyTyped="#searchAction" promptText="Type the name of the product you are searching for :)" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="12.0" />
-                  <AnchorPane layoutY="46.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <AnchorPane layoutY="46.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="42.0">
                      <children>
                         <ScrollPane fx:id="marketPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" />
                      </children>

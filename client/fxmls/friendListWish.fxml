@@ -34,7 +34,7 @@
                         </Label>
                         <HBox>
                            <children>
-                              <Label prefHeight="28.0" text="Price:  ">
+                              <Label prefHeight="22.0" prefWidth="91.0" text="Price:  ">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -48,7 +48,7 @@
                         </HBox>
                         <HBox>
                            <children>
-                              <Label prefHeight="28.0" text="Money left:  ">
+                              <Label prefHeight="22.0" prefWidth="119.0" text="Money left:  ">
                                  <font>
                                     <Font size="16.0" />
                                  </font>

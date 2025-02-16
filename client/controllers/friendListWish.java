@@ -60,52 +60,56 @@ public class friendListWish {
             Double amount = Double.parseDouble(amountText);
 
             if (amount <= Double.parseDouble(moneyLeftLabel.getText()))
+                if (amount <= Client.currentUser.getBalance())
 
-                Platform.runLater(() -> {
+                    Platform.runLater(() -> {
 
-                    total_mony += amount;
-                    try {
+                        total_mony += amount;
+                        try {
 
-                        Connection contribute = new Connection();
+                            Connection contribute = new Connection();
 
-                        contribute.getOutput().writeObject("Contribute");
-                        contribute.getOutput().writeObject(Client.currentUser);
-                        contribute.getOutput().writeObject(thisFriend);
-                        contribute.getOutput().writeObject(thisWish);
-                        contribute.getOutput().writeObject(amount);
+                            contribute.getOutput().writeObject("Contribute");
+                            contribute.getOutput().writeObject(Client.currentUser);
+                            contribute.getOutput().writeObject(thisFriend);
+                            contribute.getOutput().writeObject(thisWish);
+                            contribute.getOutput().writeObject(amount);
 
-                        String responce = (String)contribute.getInput().readObject();
+                            String responce = (String)contribute.getInput().readObject();
 
-                        switch (responce) {
+                            switch (responce) {
 
-                        case "User":
-                            Client.currentUser = (User)contribute.getInput().readObject();
-                            break;
+                            case "User":
+                                Client.currentUser = (User)contribute.getInput().readObject();
+                                break;
 
-                        case "Not Found":
-                            break;
+                            case "Not Found":
+                                break;
+                            }
+
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (ClassNotFoundException e) {
+                            e.printStackTrace();
                         }
 
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (ClassNotFoundException e) {
-                        e.printStackTrace();
-                    }
+                        progressBar.setProgress((total_mony) / thisWish.getItem().getPrice());
+                        moneyLeftLabel.setText(
+                                String.valueOf(thisWish.getItem().getPrice() - total_mony));
 
-                    progressBar.setProgress((total_mony) / thisWish.getItem().getPrice());
-                    moneyLeftLabel
-                            .setText(String.valueOf(thisWish.getItem().getPrice() - total_mony));
+                        if (total_mony >= thisWish.getItem().getPrice()) {
+                            btnContribute.setDisable(true);
+                            contributeAmountTxt.setDisable(true);
+                            contributeLabel.setStyle("-fx-text-fill: green;");
+                            contributeLabel.setText("The Wish is Granted :)");
+                            btnContribute.setStyle("-fx-text-fill: green;");
+                            progressBar.setStyle("-fx-accent: green;");
+                        }
 
-                    if (total_mony >= thisWish.getItem().getPrice()) {
-                        btnContribute.setDisable(true);
-                        contributeAmountTxt.setDisable(true);
-                        contributeLabel.setStyle("-fx-text-fill: green;");
-                        contributeLabel.setText("The Wish is Granted :)");
-                        btnContribute.setStyle("-fx-text-fill: green;");
-                        progressBar.setStyle("-fx-accent: green;");
-                    }
+                    });
+                else
+                    contributeLabel.setText("Dont have enough money!");
 
-                });
             else
                 contributeLabel.setText("Too much money!");
 

@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 
 public class wishListWish {
 
@@ -33,13 +34,19 @@ public class wishListWish {
     @FXML
     private Label dateLabel;
 
+    @FXML
+    private ProgressBar progressBar;
+
+    @FXML
+    private Label contributeLabel;
+
     private Wish thisWish;
 
     @FXML
     void removeWishAction(ActionEvent event) {
         Platform.runLater(() -> {
             try {
-
+                btnRemoveWish.setDisable(true);
                 Connection removewish = new Connection();
 
                 removewish.getOutput().writeObject("Remove Wish");
@@ -83,6 +90,16 @@ public class wishListWish {
             total_mony += contributor.getAmount();
 
         moneyLeftLabel.setText(Double.toString(price - total_mony));
+
+        progressBar.setProgress(total_mony / price);
+
+        if (total_mony >= price) {
+            btnRemoveWish.setDisable(true);
+            contributeLabel.setStyle("-fx-text-fill: green;");
+            contributeLabel.setText("The Wish is Granted :)");
+            btnRemoveWish.setStyle("-fx-text-fill: green;");
+            progressBar.setStyle("-fx-accent: green;");
+        }
     }
 
 }
